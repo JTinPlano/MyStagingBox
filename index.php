@@ -79,9 +79,10 @@ $leftcolumn="";
 //echo isset($_COOKIE[_hrsb_msb]);
 //echo isset($_COOKIE[loggedin]);
 //exit();
-if ($_COOKIE[_hrsb_msb]== NULL && $_COOKIE[loggedin]== NULL)
+if (($_COOKIE[_hrsb_msb]== NULL && $_COOKIE[loggedin]== NULL) ||
+(isset($_COOKIE[_hrsb_msb]) && $_COOKIE[loggedin]== "false"))
 {
-//	echo "cookies are null<br>";
+	echo "inside first if statement<br>";
 	//	$loadthis="		loadContent ('#logform', '/login.html');\n";
 	$loadthis="		loadContent ('#content', 'intro.html');\n";
 	$loadthis.="		$('#visitor').show();\n";
@@ -89,8 +90,9 @@ if ($_COOKIE[_hrsb_msb]== NULL && $_COOKIE[loggedin]== NULL)
 	$leftcolumn="		$('#accordion').hide();\n";
 	$leftcolumn.="		$('#demos').accordion().show();\n";
 }
-elseif ($_COOKIE[_hrsb_msb] != NULL )
+elseif ($_COOKIE[_hrsb_msb] != NULL && $_COOKIE[loggedin]== "true")
 {
+	echo "inside elseif statement<br>";
 	$cookie=explode('_',$_COOKIE[_hrsb_msb]);
 	//print_r($cookie);
 	$cookie1=explode(':',$_COOKIE[_hrsb_msb]);
