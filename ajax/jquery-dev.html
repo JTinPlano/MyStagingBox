@@ -1,0 +1,4662 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Simplify Ajax development with jQuery</title>
+<meta http-equiv="PICS-Label" content="(PICS-1.1 &quot;http://www.icra.org/ratingsv02.html&quot; l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) &quot;http://www.rsac.org/ratingsv01.html&quot; l gen true r (n 0 s 0 v 0 l 0) &quot;http://www.classify.org/safesurf/&quot; l gen true r (SS~~000 1))">
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/">
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico">
+<meta name="Owner" content="developerWorks Content/Raleigh/IBM">
+<meta name="DC.Language" scheme="rfc1766" content="en">
+<meta name="IBM.Country" content="ZZ">
+<meta name="Security" content="Public">
+<meta name="IBM.SpecialPurpose" content="SP001">
+<meta name="IBM.PageAttributes" content="sid=1003">
+<meta name="Source" content="v16 Template Generator">
+<meta name="Robots" content="index,follow">
+<meta name="Abstract" content="jQuery is a JavaScript library that helps simplify your JavaScript and Asynchronous JavaScript + XML (Ajax) programming. Unlike similar JavaScript libraries, jQuery has a unique philosophy that allows you to express common complex code succinctly. Learn about the jQuery philosophy, discover its features and functions, perform some common Ajax tasks, and find out how to extend jQuery with plug-ins.">
+<meta name="Description" content="jQuery is a JavaScript library that helps simplify your JavaScript and Asynchronous JavaScript + XML (Ajax) programming. Unlike similar JavaScript libraries, jQuery has a unique philosophy that allows you to express common complex code succinctly. Learn about the jQuery philosophy, discover its features and functions, perform some common Ajax tasks, and find out how to extend jQuery with plug-ins.">
+<meta name="Keywords" content="jQuery, JavaScript library, libraries, JavaScript, Ajax, DOM Scripting,   animations, web development, plugins, CSS, XPath, Jesse Skinner, tttxca, tttwaca">
+<meta name="DC.Date" scheme="iso8601" content="2007-04-10">
+<meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316">
+<meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TTC00">
+<meta scheme="IBM_WTMCategory" name="IBM.WTMCategory" content="SOFDCXMLZZ">
+<meta name="DC.Rights" content="© Copyright&nbsp;IBM Corporation&nbsp;2007">
+<meta name="IBM.Effective" scheme="W3CDTF" content="2007-04-10">
+<meta name="title" content="Simplify Ajax development with jQuery">
+
+<!-- HEADER_SCRIPTS_AND_CSS_INCLUDE -->
+<link href="jquery-dev_files/all.css" media="all" rel="stylesheet" title="www" type="text/css">
+<link href="jquery-dev_files/screen.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
+<link href="jquery-dev_files/screen-uas.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
+<link href="jquery-dev_files/screen-fonts.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
+<link href="jquery-dev_files/handheld.css" media="handheld" rel="stylesheet" title="www" type="text/css">
+<link href="jquery-dev_files/print.css" media="print" rel="stylesheet" title="www" type="text/css">
+<link href="jquery-dev_files/overlay.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
+
+<!-- dW-specific CSS -->
+<link href="jquery-dev_files/dw-screen.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
+<link href="jquery-dev_files/jquery.css" media="screen,projection" rel="stylesheet" title="www" type="text/css">
+
+<script src="jquery-dev_files/ibmcommon.js" type="text/javascript">//</script><link title="IBM Search" href="http://www.ibm.com/search/opensearch/description.xml" type="application/opensearchdescription+xml" rel="search">
+<script src="jquery-dev_files/dynamicnav.js" type="text/javascript">//</script>
+
+<!-- dW functional JS -->
+<script language="JavaScript" src="jquery-dev_files/urltactic.js" type="text/javascript"></script>
+<!-- Rating_START -->
+<script language="JavaScript" src="jquery-dev_files/artrating.js" type="text/javascript"></script>
+<style type="text/css">
+.metavalue {
+  display: none;
+}
+</style>
+<!-- Rating_END --><!-- RESERVED_HEADER_INCLUDE -->
+<script language="javascript" src="jquery-dev_files/ajax1.js" type="text/javascript"></script>
+<script language="javascript" src="jquery-dev_files/search_counter-maverick.js" type="text/javascript"></script>
+<script language="javascript" src="jquery-dev_files/request_referer_capture-maverick.js" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('xmlart');
+ //-->
+</script>
+<script language="JavaScript" type="text/javascript">
+ <!--
+ function openNewWindow(url,tar,arg){window.open(url,tar,arg);}
+ //-->
+</script>
+<!-- Include file support -->
+<script language="JavaScript" type="text/javascript">
+(function($) {
+	jQuery.extend({
+		getInc: function(u,d){
+			if(u==null)return;
+			jQuery.ajax({
+	    		type: "GET",
+			url: u,
+			dataType: "text",
+	        	success: function(t) {
+				jQuery(d).html(t);
+				ibmCommon.initShowHide(jQuery(d).children()[0]);			
+			},
+			async: true
+			});
+		}
+	});
+})(jQuery);
+</script>
+<script charset="UTF-8" src="jquery-dev_files/flash-detect.js" type="text/javascript" id="flashdetect"></script><script charset="UTF-8" src="jquery-dev_files/usen-utf8.js" type="text/javascript" id="mhMenu"></script><script charset="UTF-8" src="jquery-dev_files/Controller" type="text/javascript" id="dynavEA"></script><script charset="UTF-8" src="jquery-dev_files/Controller_002" type="text/javascript" id="wiBundle"></script></head><body id="ibm-com">
+<div id="ibm-top" class="ibm-landing-page">
+
+<!-- MASTHEAD_BEGIN -->
+<div class="ibm-access"><a href="#ibm-content">Skip to main content</a></div>
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img src="jquery-dev_files/ibm-logo.gif" alt="IBM®" width="110" height="50"></a></div>
+<ul id="ibm-geo"><li id="ibm-country" class="ibm-first">Country/region</li><li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li></ul>
+  <form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input name="searchType" value="1" type="hidden"><input name="searchSite" value="dW" type="hidden"><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="jquery-dev_files/c_002.gif" alt="Search in:" width="1" height="1"></label>
+<select name="searchScope" id="sn">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;Lotus</option>
+<option value="rdd">&nbsp;Rational</option>
+<option value="tivoli">&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="javaZ">&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;Open source</option>
+<option value="webservZ">&nbsp;SOA/Web services</option>
+<option value="webarchZ">&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aI">University</option>
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" src="jquery-dev_files/c_002.gif" width="1" height="1"></label><input name="query" maxlength="100" id="q" type="text"><input id="ibm-search" class="ibm-btn-search" name="Search" value="Search" type="submit"></p></form>
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+<div id="ibm-universal-nav">
+<ul><li id="ibm-unav-home" class="ibm-first"><a href="http://www.ibm.com/us/en/">Home</a></li><li id="ibm-unav-solutions"><a class="ibm-unav-has-child" href="http://www.ibm.com/solutions/us/en/">Solutions</a><div id="gi-2843b438" class="ibm-unav-menu"><span id="gi-2843b438-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li class="ibm-mhdyn-rule"><a id="gi-d2a3ac3-trigger" href="http://www.ibm.com/smarterplanet/us/en/?cm_re=masthead-_-solutions-_-asmarterplanet">A smarter planet</a><div id="gi-d2a3ac3" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-d2a3ac3-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-485cab05-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">By industry</a><div id="gi-485cab05" class="ibm-unav-menu ibm-place-holder"><span id="gi-485cab05-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/industries/aerodefense/?cm_re=masthead-_-business-_-ind-aerodef">Aerospace and defense</a></li><li><a href="http://www.ibm.com/industries/automotive/?cm_re=masthead-_-business-_-ind-auto">Automotive</a></li><li><a href="http://www.ibm.com/industries/financialservices/banking/?cm_re=masthead-_-business-_-ind-banking">Banking</a></li><li><a href="http://www.ibm.com/industries/chemicalspetroleum/?cm_re=masthead-_-business-_-ind-chem">Chemicals and petroleum</a></li><li><a href="http://www.ibm.com/industries/construction/?cm_re=masthead-_-solutions-_-ind-construction">Construction</a></li><li><a href="http://www.ibm.com/industries/consumerproducts/?cm_re=masthead-_-business-_-ind-consumer">Consumer products</a></li><li><a href="http://www.ibm.com/industries/education/?cm_re=masthead-_-business-_-ind-edu">Education</a></li><li><a href="http://www.ibm.com/industries/electronics/?cm_re=masthead-_-business-_-ind-elec">Electronics</a></li><li><a href="http://www.ibm.com/industries/utilities/?cm_re=masthead-_-business-_-ind-energy">Energy and utilities</a></li><li><a href="http://www.ibm.com/industries/financialservices/financialmarkets/?cm_re=masthead-_-business-_-ind-finance">Financial markets</a></li><li><a href="http://www.ibm.com/industries/forestpaper/?cm_re=masthead-_-solutions-_-ind-forestpaper">Forest and paper</a></li><li><a href="http://www.ibm.com/industries/government/?cm_re=masthead-_-business-_-ind-gov">Government</a></li><li><a href="http://www.ibm.com/industries/healthcare/?cm_re=masthead-_-solutions-_-ind-health">Healthcare</a></li><li><a href="http://www.ibm.com/industries/financialservices/insurance/?cm_re=masthead-_-business-_-ind-ins">Insurance</a></li><li><a href="http://www.ibm.com/services/gbs/lifesciences?cm_re=masthead-_-solutions-_-ind-lifesci">Life sciences</a></li><li><a href="http://www.ibm.com/industries/media/?cm_re=masthead-_-business-_-ind-media">Media and entertainment</a></li><li><a href="http://www.ibm.com/industries/metalsmining/?cm_re=masthead-_-solutions-_-ind-metalsmining">Metals and mining</a></li><li><a href="http://www.ibm.com/industries/retail/?cm_re=masthead-_-business-_-ind-retail">Retail</a></li><li><a href="http://www.ibm.com/industries/telecom/?cm_re=masthead-_-business-_-ind-tele">Telecommunications</a></li><li><a href="http://www.ibm.com/industries/travel/?cm_re=masthead-_-business-_-ind-travel">Travel and transportation</a></li></ul></div></li><li class="ibm-place-holder"><a id="gi-e7fa8823-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">By business need</a><div id="gi-e7fa8823" class="ibm-unav-menu ibm-place-holder"><span id="gi-e7fa8823-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/software/data/db2bi/?cm_re=masthead-_-business-_-bzn-busint">Business intelligence</a></li><li><a href="http://www.ibm.com/services/crm/?cm_re=masthead-_-business-_-bzn-crm">Customer relationship management</a></li><li><a href="http://www.ibm.com/solutions/erp/?cm_re=masthead-_-business-_-bzn-erp">Enterprise resource planning</a></li><li><a href="http://www.ibm.com/services/us/gbs/bus/html/bcs_financialmgmt.html?re=bcs_home&amp;cm_re=masthead-_-business-_-bzn-finmgmt">Financial management</a></li><li><a href="http://www.ibm.com/services/us/gbs/bus/html/bcs_humancapitalmgmt.html?re=bcs_home&amp;cm_re=masthead-_-business-_-bzn-humancap">Human capital management</a></li><li><a href="http://www.ibm.com/software/plm/?cm_re=masthead-_-business-_-bzn-plm">Product lifecycle management</a></li><li><a href="http://www.ibm.com/security/?cm_re=masthead-_-business-_-bzn-sec">Security</a></li><li><a href="http://www.ibm.com/software/solutions/sensors/?cm_re=masthead-_-business-_-bzn-sensors">Sensors</a></li><li><a href="http://www.ibm.com/services/us/gbs/bus/html/bcs_strategyplanning.html?re=bcs_home&amp;cm_re=masthead-_-business-_-bzn-strat">Strategy and change</a></li><li><a href="http://www.ibm.com/services/scm/?cm_re=masthead-_-business-_-bzn-scm">Supply chain management</a></li></ul></div></li><li class="ibm-place-holder"><a id="gi-3369be7a-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">By IT issue</a><div id="gi-3369be7a" class="ibm-unav-menu ibm-place-holder"><span id="gi-3369be7a-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/itsolutions/business-process-management/?cm_re=masthead-_-business-_-bzn-bpm">Business process management</a></li><li><a href="http://www.ibm.com/itsolutions/collaboration/?cm_re=masthead-_-business-_-bzn-collab">Collaboration</a></li><li><a href="http://www.ibm.com/itsolutions/content-management//?cm_re=masthead-_-business-_-bzn-content">Content management</a></li><li><a href="http://www.ibm.com/itsolutions/it-cost/?cm_re=masthead-_-business-_-bzn-cost">Cost management</a></li><li><a href="http://www.ibm.com/itsolutions/data/?cm_re=masthead-_-business-_-bzn-data">Data management</a></li><li><a href="http://www.ibm.com/itsolutions/disaster-recovery/?cm_re=masthead-_-business-_-bzn-recovery">Disaster recovery</a></li><li><a href="http://www.ibm.com/itsolutions/distribution-management/?cm_re=masthead-_-business-_-bzn-disman">Distribution management</a></li><li><a href="http://www.ibm.com/itsolutions/energy-efficiency/?cm_re=masthead-_-business-_-bzn-energy">Energy efficiency</a></li><li><a href="http://www.ibm.com/itsolutions/eai/?cm_re=masthead-_-business-_-bzn-eai">Enterprise application integration</a></li><li><a href="http://www.ibm.com/itsolutions/enterprisearchitecture/">Enterprise architecture</a></li><li><a href="http://www.ibm.com/itsolutions/compliance/?cm_re=masthead-_-business-_-bzn-compliance">Regulatory compliance</a></li><li><a href="http://www.ibm.com/security?cm_re=masthead-_-business-_-bzn-security">Security</a></li><li><a href="http://www.ibm.com/itsolutions/systems-management/?cm_re=masthead-_-business-_-bzn-sysman">Systems management</a></li><li><a href="http://www.ibm.com/itsolutions/virtualization/?cm_re=masthead-_-business-_-bzn-virtual">Virtualization</a></li><li><a href="http://www.ibm.com/itsolutions/portals/?cm_re=masthead-_-business-_-bzn-wrkforce">Workforce productivity</a></li></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-9e22cc05-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">By Business Partner</a><div id="gi-9e22cc05" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-9e22cc05-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/solutions/cisco/us/en/?cm_re=masthead-_-business-_-bp-cisco">IBM and Cisco</a></li><li><a href="http://www.ibm.com/solutions/3ds/us/en/?cm_re=masthead-_-business-_-bp-ds">IBM and Dassault Systèmes</a></li><li><a href="http://www.ibm.com/solutions/oracle/us/en/?cm_re=masthead-_-business-_-bp-oracle">IBM and Oracle</a></li><li><a href="http://www.ibm.com/solutions/sap/us/en/?cm_re=masthead-_-business-_-bp-sap">IBM and SAP</a></li><li><a href="http://www.ibm.com/solutions/alliance/us/en/?cm_re=masthead-_-business-_-bp-more">More Alliance Partners</a></li><li class="ibm-mhdyn-rule"><a id="gi-fb91a027-trigger" href="http://www-304.ibm.com/jct09002c/gsdod/showcase.do?cm_re=masthead-_-business-_-bp-select">Business Partner solutions</a><div id="gi-fb91a027" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-fb91a027-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li><a href="http://www.ibm.com/partnerworld/wps/bplocator/?cm_re=masthead-_-business-_-bp-loc">Find a Business Partner</a></li></ul></div></li><li><a href="http://www.ibm.com/services/us/gbs/bus/html/bcs_index.html?cm_re=masthead-_-business-_-busconsult">Business consulting</a></li><li><a href="http://www.ibm.com/cloud?cm_re=masthead-_-solutions-_-cloud">Cloud computing</a></li><li><a href="http://www.ibm.com/systems/dynamicinfrastructure/?cm_re=masthead-_-business-_-di">Dynamic infrastructure</a></li><li><a href="http://www.ibm.com/financing/us/?cm_re=masthead-_-business-_-financing">Financing</a></li><li><a href="http://www.ibm.com/green/?cm_re=masthead-_-business-_-green">Green: energy, environment &amp; sustainability</a></li><li class="ibm-mhdyn-rule"><a id="gi-846f0ad4-trigger" href="http://www.ibm.com/soa?pgel=ibmhzn&amp;cm_re=masthead-_-business-_-soa">Service oriented architecture (SOA)</a><div id="gi-846f0ad4" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-846f0ad4-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-682d56d5-trigger" href="http://www.ibm.com/finder/businesscenter/us/en/itsolutionsservices_topic.wss?cm_re=masthead-_-business-_-sol4mb">Small and medium business</a><div id="gi-682d56d5" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-682d56d5-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li><a href="http://www.ibm.com/businesssolutions/us/en/?cm_re=masthead-_-business-_-more">More</a></li></ul></div></li><li id="ibm-unav-services"><a class="ibm-unav-has-child" href="http://www.ibm.com/technologyservices/us/en/">Services</a><div id="gi-10976e66" class="ibm-unav-menu"><span id="gi-10976e66-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li class="ibm-mhdyn-rule"><a id="gi-3fa6c4f4-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">IT services</a><div id="gi-3fa6c4f4" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-3fa6c4f4-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/services/us/index.wss">All IT services</a></li><li><a href="http://www.ibm.com/services/continuity/?cm_re=masthead-_-itservices-_-buscont">Business continuity and resiliency services</a></li><li><a href="http://www.ibm.com/services/enduser/?cm_re=masthead-_-itservices-_-enduser">End-user services</a></li><li><a href="http://www.ibm.com/services/integratedcommunications/?cm_re=masthead-_-itservices-_-communications">Integrated communications services</a></li><li><a href="http://www.ibm.com/services/itsaconsulting/?cm_re=masthead-_-itservices-_-strategy">IT strategy and architecture services</a></li><li><a href="http://www.ibm.com/services/maintenance/?cm_re=masthead-_-itservices-_-maint">Maintenance and technical support services</a></li><li><a href="http://www.ibm.com/services/middleware/?cm_re=masthead-_-itservices-_-middleware">Middleware services</a></li><li><a href="http://www.ibm.com/services/security/?cm_re=masthead-_-itservices-_-security">Security services</a></li><li><a href="http://www.ibm.com/services/server/?cm_re=masthead-_-itservices-_-server">Server services</a></li><li><a href="http://www.ibm.com/services/siteandfacilities/?cm_re=masthead-_-itservices-_-site">Site and facilities services</a></li><li><a href="http://www.ibm.com/services/storage/?cm_re=masthead-_-itservices-_-storage">Storage and data services</a></li><li><a href="http://www.ibm.com/services/us/index.wss/allservices">IT services A-Z</a></li></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-5e474183-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">Business consulting</a><div id="gi-5e474183" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-5e474183-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/services/us/gbs/bus/html/bcs_index.html?cm_re=masthead-_-itservices-_-busconsult">All business consulting</a></li><li><a href="http://www.ibm.com/gbs/bao?cm_re=masthead-_-itservices-_-bao">Business analytics and optimization</a></li><li><a href="http://www.ibm.com/services/us/gbs/bus/html/bcs_salesmrktingservices.html?re=bcs_home">Customer relationship management</a></li><li><a href="http://www.ibm.com/services/us/gbs/bus/html/bcs_financialmgmt.html?re=bcs_home">Financial management</a></li><li><a href="http://www.ibm.com/services/us/gbs/bus/html/bcs_humancapitalmgmt.html?re=bcs_home">Human capital management</a></li><li><a href="http://www.ibm.com/services/us/gbs/bus/html/bcs_strategyplanning.html?re=bcs_home">Strategy and change</a></li><li class="ibm-mhdyn-rule"><a id="gi-b0a083e1-trigger" href="http://www.ibm.com/services/us/gbs/bus/html/bcs_supplychainprocurement.html?re=bcs_home">Supply chain management</a><div id="gi-b0a083e1" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-b0a083e1-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li><a href="http://www.ibm.com/services/us/gbs/bus/html/bcs_whatwethink.html?cm_re=masthead-_-itservices-_-thoughtleader">Thought leadership</a></li></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-5e8c6226-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">Application services</a><div id="gi-5e8c6226" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-5e8c6226-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/services/applications?cm_re=masthead-_-business-_-apps-allappserv">All application services</a></li><li><a href="http://www.ibm.com/services/us/gbs/app/html/gbs_app_custom_appdev_sysinteg.html?cm_re=masthead-_-business-_-apps-appdev">Custom application development and system integration</a></li><li><a href="http://www.ibm.com/services/ams?cm_re=masthead-_-business-_-apps-appmgmt">Application management</a></li></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-6c9f28c8-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">Outsourcing services</a><div id="gi-6c9f28c8" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-6c9f28c8-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/services/us/index.wss/offerfamily/aod/a1028600">Applications outsourcing</a></li><li><a href="http://www.ibm.com/services/us/index.wss/offerfamily/igs/a1001429">Business process outsourcing</a></li><li><a href="http://www.ibm.com/services/us/index.wss/offerfamily/gts/a1029385">IT outsourcing and hosting</a></li></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-5b775df5-trigger" href="http://www.ibm.com/training">Training</a><div id="gi-5b775df5" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-5b775df5-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-695948aa-trigger" href="http://www-01.ibm.com/finder/businesscenter/us/en/itsolutionsservices_topic.wss?cm_re=masthead-_-itservices-_-medbus">Small and medium business</a><div id="gi-695948aa" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-695948aa-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-5183aec2-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">Other services</a><div id="gi-5183aec2" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-5183aec2-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/financing/us/recovery/?cm_re=masthead-_-itservices-_-asset">Asset recovery</a></li><li><a href="http://www.ibm.com/software/sw-services/?cm_re=masthead-_-itservices-_-software">Software services</a></li></ul></div></li><li><a href="http://www.ibm.com/technologyservices/us/en/?cm_re=masthead-_-itservices-_-more">More</a></li></ul></div></li><li id="ibm-unav-products"><a class="ibm-unav-has-child" href="http://www.ibm.com/products/us/en/">Products</a><div id="gi-da54c8de" class="ibm-unav-menu"><span id="gi-da54c8de-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li class="ibm-place-holder"><a id="gi-dde2cb6d-trigger" href="http://www.ibm.com/products/specialoffers/us/en/index.html?cm_re=masthead-_-products-_-promo">Special offers</a><div id="gi-dde2cb6d" class="ibm-unav-menu ibm-place-holder"><span id="gi-dde2cb6d-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-4fcd5af5-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">Software</a><div id="gi-4fcd5af5" class="ibm-unav-menu ibm-place-holder"><span id="gi-4fcd5af5-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/software?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-allsoftware">Software overview</a></li><li><a href="http://www.ibm.com/software/products/us/en/?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-swprodfinder">Products</a></li><li class="ibm-mhdyn-rule"><a id="gi-4b3bfcc6-trigger" href="http://www14.software.ibm.com/webapp/download/byproduct.jsp?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-trials">Trials and demos</a><div id="gi-4b3bfcc6" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-4b3bfcc6-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li><a href="http://www.ibm.com/software/analytics/?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-bizanalytics">Business Analytics</a></li><li><a href="http://www.ibm.com/software/data/cognos/?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-cognos">- Cognos</a></li><li><a href="http://www.ibm.com/software/analytics/spss/?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-spss">- SPSS</a></li><li><a href="http://www.ibm.com/software/data/content-management/?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-ecm">Enterprise Content Management</a></li><li><a href="http://www.ibm.com/software/data?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-infomgmt">Information Management</a></li><li><a href="http://www.ibm.com/software/data/management/?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-db2">- DB2</a></li><li><a href="http://www.ibm.com/software/data/informix/?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-informix">- Informix</a></li><li><a href="http://www.ibm.com/software/data/infosphere/?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-infosphere">- InfoSphere</a></li><li><a href="http://www.ibm.com/software/lotus?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-lotus">Lotus</a></li><li><a href="http://www.ibm.com/software/rational?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-rational">Rational</a></li><li><a href="http://www.ibm.com/software/tivoli?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-tivoli">Tivoli</a></li><li><a href="http://www.ibm.com/software/websphere?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-websphere">WebSphere</a></li><li><a href="http://www.ibm.com/software/os/systemz/en_US/?pgel=ibmhzn&amp;cm_re=masthead-_-products-_-sw-sysz">System z software</a></li></ul></div></li><li class="ibm-place-holder"><a id="gi-9b492d0d-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">Storage</a><div id="gi-9b492d0d" class="ibm-unav-menu ibm-place-holder"><span id="gi-9b492d0d-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/storage/?cm_re=masthead-_-products-_-stg-allstorage">All storage</a></li><li><a href="http://www.ibm.com/storage/disk/?cm_re=masthead-_-products-_-stg-disk">Disk systems</a></li><li><a href="http://www.ibm.com/storage/tape/?cm_re=masthead-_-products-_-stg-tape">Tape systems</a></li><li><a href="http://www.ibm.com/storage/snetwork/?cm_re=masthead-_-products-_-stg-san">Storage area networks</a></li><li><a href="http://www.ibm.com/totalstorage/nas/?cm_re=masthead-_-products-_-stg-nas">Network attached storage</a></li><li><a href="http://www.ibm.com/storage/software/?cm_re=masthead-_-products-_-stg-storagesoft">Storage software</a></li><li><a href="http://www.ibm.com/pc/ww/hdd/hddredirect.html?cm_re=masthead-_-products-_-stg-hdd">Hard drives/microdrives</a></li><li><a href="http://www.ibm.com/systems/storage/product/?cm_re=masthead-_-products-_-stg-storagea2z">Storage A to Z</a></li></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-f91e31d1-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">Servers &amp; systems</a><div id="gi-f91e31d1" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-f91e31d1-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/systems/?cm_re=masthead-_-products-_-sys-allsystems">All servers and systems</a></li><li><a href="http://www.ibm.com/systems/software/?cm_re=masthead-_-products-_-sys-syssw">Systems software</a></li><li><a href="http://www.ibm.com/systems/power/?cm_re=masthead-_-products-_-sys-power">Power Systems</a></li><li><a href="http://www.ibm.com/systems/i/?cm_re=masthead-_-products-_-sys-iseries">System i (iSeries)</a></li><li><a href="http://www.ibm.com/systems/p/?cm_re=masthead-_-products-_-sys-pseries">System p (pSeries)</a></li><li><a href="http://www.ibm.com/systems/z/?cm_re=masthead-_-products-_-sys-zseries">System z (Mainframe)</a></li><li><a href="http://www.ibm.com/systems/x/?cm_re=masthead-_-products-_-sys-xseries">System x (xSeries)</a></li><li><a href="http://www.ibm.com/systems/bladecenter/?cm_re=masthead-_-products-_-sys-blade">BladeCenter</a></li><li class="ibm-mhdyn-rule"><a id="gi-12fe2a0f-trigger" href="http://www.ibm.com/systems/clusters/?cm_re=masthead-_-products-_-sys-cluster">Cluster systems</a><div id="gi-12fe2a0f" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-12fe2a0f-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li><a href="http://www.ibm.com/systems/hardware/browse/unix/?cm_re=masthead-_-products-_-sys-unix">UNIX servers</a></li><li class="ibm-mhdyn-rule"><a id="gi-c4803ffd-trigger" href="http://www.ibm.com/systems/hardware/browse/linux/?cm_re=masthead-_-products-_-sys-linux">Linux servers</a><div id="gi-c4803ffd" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-c4803ffd-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li><a href="http://www.ibm.com/systems/hardware/browse/inpro/?cm_re=masthead-_-products-_-sys-intel">Intel processor-based servers</a></li><li class="ibm-mhdyn-rule"><a id="gi-8c7b597e-trigger" href="http://www.ibm.com/systems/hardware/browse/amdpro/?cm_re=masthead-_-products-_-sys-amd">AMD processor-based servers</a><div id="gi-8c7b597e" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-8c7b597e-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li><a href="http://www.ibm.com/systems/oem?cm_re=masthead-_-products-_-oemsys">OEM systems</a></li></ul></div></li><li class="ibm-place-holder"><a id="gi-bc7f4796-trigger" href="http://www.ibm.com/services/us/index.wss/offerfamily/iss/a1029097?cm_re=masthead-_-products-_-iss">Internet security</a><div id="gi-bc7f4796" class="ibm-unav-menu ibm-place-holder"><span id="gi-bc7f4796-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-422f3554-trigger" href="http://www.ibm.com/shop/pc">Personal computers</a><div id="gi-422f3554" class="ibm-unav-menu ibm-place-holder"><span id="gi-422f3554-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-c5523187-trigger" href="http://www.ibm.com/products/retail/?cm_re=masthead-_-products-_-pos">Point of sale</a><div id="gi-c5523187" class="ibm-unav-menu ibm-place-holder"><span id="gi-c5523187-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-379d09e2-trigger" href="http://www.infoprint.com/us">Printing systems from InfoPrint</a><div id="gi-379d09e2" class="ibm-unav-menu ibm-place-holder"><span id="gi-379d09e2-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-7f64742c-trigger" href="http://www.ibm.com/technology/?cm_re=masthead-_-products-_-chips">Semiconductors</a><div id="gi-7f64742c" class="ibm-unav-menu ibm-place-holder"><span id="gi-7f64742c-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-52a0b19a-trigger" href="http://www.ibm.com/shop/americas/content/home/store_IBMPublicUSA/en_US/Upgrades.html?cm_re=masthead-_-products-_-upgrades">Upgrades, accessories &amp; parts</a><div id="gi-52a0b19a" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-52a0b19a-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-f8f99bcf-trigger" href="http://www.ibm.com/shop/usedsystems">Certified used systems &amp; storage</a><div id="gi-f8f99bcf" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-f8f99bcf-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-964142bc-trigger" href="http://www.ibm.com/community/?cm_re=masthead-_-products-_-promo">Communities</a><div id="gi-964142bc" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-964142bc-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-30de42ef-trigger" href="http://www.ibm.com/businesscenter/smb/us/en/smallbusiness?cm_re=masthead-_-products-_-smallbus">Small business products</a><div id="gi-30de42ef" class="ibm-unav-menu ibm-place-holder"><span id="gi-30de42ef-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-da8881b3-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">Medium business products</a><div id="gi-da8881b3" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-da8881b3-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/finder/businesscenter/us/en/hardware_topic.wss?cm_re=masthead-_-products-_-med-hardware">Hardware</a></li><li><a href="http://www.ibm.com/finder/businesscenter/us/en/software_topic.wss?cm_re=masthead-_-products-_-med-software">Software</a></li></ul></div></li><li class="ibm-place-holder"><a id="gi-7c273ef-trigger" href="http://www.ibm.com/products/us/?cm_re=masthead-_-products-_-more">More</a><div id="gi-7c273ef" class="ibm-unav-menu ibm-place-holder"><span id="gi-7c273ef-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li></ul></div></li><li id="ibm-unav-support"><a class="ibm-unav-has-child" href="http://www.ibm.com/support/us/en/">Support &amp; downloads</a><div id="gi-3dde2dcd" class="ibm-unav-menu"><span id="gi-3dde2dcd-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li class="ibm-place-holder"><a id="gi-e724a511-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">Download</a><div id="gi-e724a511" class="ibm-unav-menu ibm-place-holder"><span id="gi-e724a511-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/products/finder/us/finders?pg=ddfinder&amp;cm_re=other-_-suprcn-_-download">Fixes, updates and drivers</a></li><li><a href="http://www14.software.ibm.com/webapp/download/byproduct.jsp?pgel=ibmhzn1&amp;cm_re=masthead-_-supdl-_-dl-trials">Trials and demos</a></li></ul></div></li><li class="ibm-place-holder"><a id="gi-ecc37a7f-trigger" href="http://www.ibm.com/support/troubleshooting/en_US?cm_re=masthead-_-supdl-_-troubleshoot">Troubleshoot</a><div id="gi-ecc37a7f" class="ibm-unav-menu ibm-place-holder"><span id="gi-ecc37a7f-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-8f73c418-trigger" href="http://www.ibm.com/support/advsrch.wss?rs=0&amp;loc=en_US&amp;cm_re=masthead-_-supdl-_-search">Search</a><div id="gi-8f73c418" class="ibm-unav-menu ibm-place-holder"><span id="gi-8f73c418-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-ddbc4a26-trigger" href="http://www.ibm.com/support/documentation/en_US?cm_re=masthead-_-supdl-_-documentation">Documentation</a><div id="gi-ddbc4a26" class="ibm-unav-menu ibm-place-holder"><span id="gi-ddbc4a26-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-4e82053e-trigger" href="http://www.ibm.com/support/forums/en_US?cm_re=masthead-_-supdl-_-forums">Forums &amp; communities</a><div id="gi-4e82053e" class="ibm-unav-menu ibm-place-holder"><span id="gi-4e82053e-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-b5f8fc16-trigger" href="http://www.ibm.com/support/plan/en_US?cm_re=masthead-_-supdl-_-plan">Plan</a><div id="gi-b5f8fc16" class="ibm-unav-menu ibm-place-holder"><span id="gi-b5f8fc16-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-6ac9674f-trigger" href="http://www.ibm.com/support/install/en_US?cm_re=masthead-_-supdl-_-install">Install</a><div id="gi-6ac9674f" class="ibm-unav-menu ibm-place-holder"><span id="gi-6ac9674f-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-412ce8cc-trigger" href="http://www.ibm.com/support/use/en_US?cm_re=masthead-_-supdl-_-use">Use</a><div id="gi-412ce8cc" class="ibm-unav-menu ibm-place-holder"><span id="gi-412ce8cc-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-229e2805-trigger" href="http://www.ibm.com/support/electronic/uprtransition.wss?category=2&amp;locale=en_us&amp;cm_re=masthead-_-supdl-_-request">Open a technical service request</a><div id="gi-229e2805" class="ibm-unav-menu ibm-place-holder"><span id="gi-229e2805-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-192ad5e1-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0);">Support by product</a><div id="gi-192ad5e1" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-192ad5e1-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="http://www.ibm.com/software/support/?cm_re=masthead-_-supdl-_-sbp-software">Software</a></li><li><a href="http://www.ibm.com/systems/support?cm_re=masthead-_-supdl-_-sbp-systems">Servers and systems</a></li><li><a href="http://www.ibm.com/systems/support/supportsite.wss/brandmain?brandind=5345868&amp;cm_re=masthead-_-supdl-_-sbp-storage">System storage</a></li><li><a href="http://www.infoprintsolutionscompany.com/internet/wwsites.nsf/vwwebpublished/sm_home_us?opendocument&amp;cm_re=masthead-_-supdl-_-sbp-print">Printing systems from InfoPrint</a></li><li><a href="http://www.lenovo.com/support/?cm_re=masthead-_-supdl-_-sbp-lenovo">Lenovo ThinkPads and ThinkCentres</a></li></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-f77a923c-trigger" href="http://www.ibm.com/support/operations/us/en?cm_re=masthead-_-supdl-_-getadmin">Customer support</a><div id="gi-f77a923c" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-f77a923c-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-39a1fdd1-trigger" href="http://www.ibm.com/support/us/en/?cm_re=masthead-_-supdl-_-more">More</a><div id="gi-39a1fdd1" class="ibm-unav-menu ibm-place-holder"><span id="gi-39a1fdd1-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li></ul></div></li><li id="ibm-unav-myibm"><a class="ibm-unav-has-child" href="http://www.ibm.com/account/us/en/">My IBM</a><div id="gi-9052e1ad" class="ibm-unav-menu"><span id="gi-9052e1ad-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li class="ibm-place-holder"><a id="gi-eeb7e3c-trigger" href="http://www.ibm.com/account/myaccounts/us/en/?cm_re=masthead-_-myibm-_-myacct">My accounts</a><div id="gi-eeb7e3c" class="ibm-unav-menu ibm-place-holder"><span id="gi-eeb7e3c-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-b1972e87-trigger" href="https://www.ibm.com/account/myibm/profile.do?cc=us&amp;lc=&amp;cm_re=masthead-_-myibm-_-myprofile">My profile</a><div id="gi-b1972e87" class="ibm-unav-menu ibm-place-holder"><span id="gi-b1972e87-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-myinterest"><a id="gi-ed813c6c-trigger" href="https://www.ibm.com/account/myibm/myinterestView.do?cc=us&amp;lc=en&amp;cm_re=masthead-_-myibm-_-myinterests">My interests</a><div id="gi-ed813c6c" class="ibm-unav-menu ibm-myinterest"><span id="gi-ed813c6c-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-39749440-trigger" href="http://www.ibm.com/account/mycommunity/us/en/?cm_re=masthead-_-myibm-_-community">My community spaces</a><div id="gi-39749440" class="ibm-unav-menu ibm-place-holder"><span id="gi-39749440-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-f7b49925-trigger" href="https://www.ibm.com/systems/support/myview/subscription/css.wss/folders?methodName=listMyFolders&amp;cm_re=masthead-_-myibm-_-tech">My technical support</a><div id="gi-f7b49925" class="ibm-unav-menu ibm-place-holder"><span id="gi-f7b49925-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-ca4605e9-trigger" class="ibm-unav-menu-has-child" href="javascript:void(0)">My customer support</a><div id="gi-ca4605e9" class="ibm-unav-menu ibm-place-holder"><span id="gi-ca4605e9-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul><li><a href="https://www.ibm.com/shop/americas/webapp/wcs/stores/servlet/default/OrderItemDisplay?langId=-1&amp;storeId=1&amp;catalogId=-840&amp;krypto=g3mOZ2uZQalqnkMCJkVJ1Q%3D%3D&amp;ddkey=OrderItemDisplay&amp;cm_re=masthead-_-myibm-_-cs-cart">Shopping cart</a></li><li><a href="http://www.ibm.com/support/operations/us/en/contracts?cm_re=masthead-_-myibm-_-cs-contracts">Contracts</a></li><li><a href="http://www.ibm.com/support/operations/us/en/orderdelivery?cm_re=masthead-_-myibm-_-cs-orders">Orders and delivery</a></li><li><a href="http://www.ibm.com/support/operations/us/en/inventory?cm_re=masthead-_-myibm-_-cs-inventory">Inventory and maintenance</a></li><li><a href="http://www.ibm.com/support/operations/us/en/invoicespayments?cm_re=masthead-_-myibm-_-cs-invoices">Invoices and payments</a></li><li><a href="http://www.ibm.com/support/operations/us/en/learnmore3a?cm_re=masthead-_-myibm-_-cs-self">Self-service tools</a></li><li><a href="http://www.ibm.com/support/operations/us?cm_re=masthead-_-myibm-_-cs-more">More customer support</a></li></ul></div></li><li class="ibm-mhdyn-rule"><a id="gi-9cc85d2-trigger" href="http://www-931.ibm.com/bin/subscriptions/welcome.cgi?cl=usen&amp;cm_re=masthead-_-myibm-_-subscriptions">Subscriptions</a><div id="gi-9cc85d2" class="ibm-unav-menu ibm-mhdyn-rule"><span id="gi-9cc85d2-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li><li class="ibm-place-holder"><a id="gi-973886f6-trigger" href="http://www.ibm.com/account/us/en/?cm_re=masthead-_-myibm-_-more">More</a><div id="gi-973886f6" class="ibm-unav-menu ibm-place-holder"><span id="gi-973886f6-ehb" class="ibm-unav-menu-ehb"><img src="jquery-dev_files/c.gif" alt=""></span><a class="ibm-access"></a><ul></ul></div></li></ul></div></li></ul>
+</div>
+</div>
+<!-- MASTHEAD_END -->
+
+<div id="ibm-pcon">
+
+<!-- CONTENT_BEGIN -->
+<div id="ibm-content">
+
+<!-- Navigation_Trail_BEGIN -->
+<!-- &nbsp; -->
+        <div id="ibm-content-head"><ul id="ibm-navigation-trail"><li class="ibm-first"><a href="http://www.ibm.com/developerworks/">developerWorks</a></li><li><a href="http://www.ibm.com/developerworks/xml/">XML</a></li><li><a href="http://www.ibm.com/developerworks/views/xml/library.jsp">Technical library</a></li></ul></div>
+<!-- Navigation_Trail_END -->
+
+<!-- dW_Summary Area_START -->
+<div id="dw-summary-article">
+
+<div class="dw-content-head">
+<h1>Simplify Ajax development with jQuery</h1><p><em>Discover how easy Ajax and DOM scripting can be</em></p>
+</div>
+
+<div class="ibm-container-body ibm-two-column">
+
+<div class="ibm-column ibm-first">
+<div class="author"><a class="dwauthor" rel="#authortip1" href="#author1">Jesse Skinner</a>, Web Developer, Freelance</div><div style="display: none;" id="authortip1" class="dwauthor-onload-state ibm-no-print"><div class="position"><img src="jquery-dev_files/p-jskinner.jpg" alt="Photo of Jesse Skinner" width="64" height="80"></div>Jesse
+Skinner is a freelance Web developer specializing in JavaScript and
+CSS. He spends his time expatriating from Canada to Germany, making the
+Web more fun to use, and unraveling the ancient mysteries of CSS
+browser compatibility. If you'd like more information about Jesse or to
+read more about Web development, check out his blog at <a href="http://www.thefutureoftheweb.com/">The Future of the Web</a>.</div>
+<p></p>
+<p><b>Summary:</b>&nbsp; jQuery is a JavaScript library that helps
+simplify your JavaScript™ and Asynchronous JavaScript + XML (Ajax)
+programming. Unlike similar JavaScript libraries, jQuery has a unique
+philosophy that allows you to express common complex code succinctly.
+Learn about the jQuery philosophy, discover its features and functions,
+perform some common Ajax tasks, and find out how to extend jQuery with
+plug-ins.</p>
+
+<div id="dw-tag-content" class="ibm-no-print"><p><b>Tags for this article:</b>&nbsp; <a href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=javascript')">javascript</a>, <a href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=jquery')">jquery</a></p></div><div id="dw-moretags-access" class="ibm-access"></div>
+<p class="ibm-no-print"></p><div id="dw-tag-this" class="ibm-no-print"><a class="ibm-external-link" onclick="jQuery.launchTagThisWindow(); return false;" href="#">Tag this!</a></div><div id="interestShow" class="ibm-no-print"><div id="dw-interest-anon"><a id="intAnonBtn" class="ibm-external-link" href="">Update My dW interests</a> (<a class="dw-interest" href="https://www.ibm.com/developerworks/dwwi/DWAuthRouter?m=loginpage&amp;d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html">Log in</a> | <a class="dw-interest" href="#overlay" onclick="ibmCommon.Overlays.show('dwmyinterestadd', this);return false;">What's this?</a>) <a class="ibm-access" href="#dwmyinterestaddhelp">Skip to help for Update My dW interests</a></div></div>
+</div>
+
+<div class="ibm-column ibm-second">
+<p class="leading"><b>Date:</b>&nbsp; 10 Apr 2007
+<br><b>Level: </b>&nbsp;Intermediate
+<br class="ibm-ind-link"><b>PDF:</b>&nbsp; <a href="http://download.boulder.ibm.com/ibmdl/pub/software/dw/xml/x-ajaxjquery/x-ajaxjquery-pdf.pdf">A4 and Letter</a> (42 KB)<a class="ibm-external-link" href="http://www.adobe.com/products/acrobat/readstep2.html">Get Adobe® Reader®</a>
+<br><b>Also available in:&nbsp;</b>
+&nbsp;<a href="http://www.ibm.com/developerworks/cn/xml/x-ajaxjquery.html">Chinese</a>
+&nbsp;<a href="http://www.ibm.com/developerworks/kr/library/x-ajaxjquery.html">Korean</a> 
+
+&nbsp;<a href="http://www.ibm.com/developerworks/jp/xml/library/x-ajaxquery.html">Japanese</a> 
+
+
+
+<br>
+<br><b>Activity:</b>&nbsp; 376343 views
+<br><b>Comments:</b> &nbsp; <span id="nCmts">3&nbsp;(<a href="#icomments">View or add comments</a>)</span>
+<!-- Rating_Area_Begin -->
+<!-- Ensure that div id is based on input id and ends with -widget -->	
+<input id="art-rating" name="ratinga" value="4" type="hidden"></p><div id="art-rating-widget"><a href="javascript:void(0);"><img alt="1 star" title="Click to rate 1 star" src="jquery-dev_files/avg-star-on.gif" width="20" height="20"></a><a href="javascript:void(0);"><img alt="2 stars" title="Click to rate 2 stars" src="jquery-dev_files/avg-star-on.gif" width="20" height="20"></a><a href="javascript:void(0);"><img alt="3 stars" title="Click to rate 3 stars" src="jquery-dev_files/avg-star-on.gif" width="20" height="20"></a><a href="javascript:void(0);"><img alt="4 stars" title="Click to rate 4 stars" src="jquery-dev_files/avg-star-on.gif" width="20" height="20"></a><a href="javascript:void(0);"><img alt="5 stars" title="Click to rate 5 stars" src="jquery-dev_files/star-off.gif" width="20" height="20"></a><span id="rateTxt">  Average rating (based on 390 votes)</span></div>
+<script language="JavaScript" type="text/javascript">
+// <![CDATA[
+   // widget div id and article id as args
+   window.artRating.init('art-rating-widget');
+// ]]>
+</script>
+<!-- Rating_Area_End -->
+
+</div>
+
+</div>
+</div>
+<!-- dW_Summary_Area_END -->
+
+<!-- CONTENT_BODY -->
+<div id="ibm-content-body">
+
+<!-- MAIN_COLUMN_BEGIN -->
+<div id="ibm-content-main">
+
+<!-- Related_Searches_Area -->
+<!-- Related_Searches_Area_Begin -->
+<script type="text/javascript" language="javascript">
+	     capture_referrer();
+</script>
+
+<div id="dw-related-searches-article" style="display: none;">
+<div class="ibm-container ibm-alternate-two">
+<div class="ibm-container-body">
+
+<!--  START : HTML FOR ARTICLE SEARCH -->
+  <div id="article_results" style="display: block;"></div>
+<!--  END : HTML FOR ARTICLE SEARCH -->
+
+</div>
+</div>
+</div>
+<!-- Related_Searches_Area_End -->
+<!-- MAIN_COLUMN_CONTAINER_BEGIN -->
+<div class="ibm-container">
+
+<!-- MAIN_COLUMN_CONTENT_BEGIN -->
+<p><a name="whats-jquery"><span class="atitle">What's jQuery?</span></a></p><p>Created
+by John Resig in early 2006, jQuery is a great library for anyone who
+works with JavaScript code. Whether you're new to the JavaScript
+language and want a library to address some of the complexities of
+Document Object Model (DOM) scripting and Ajax or you're an advanced
+JavaScript guru and tired of the boring repetition involved with DOM
+scripting and Ajax, jQuery will suit you well.</p><p>jQuery helps you keep your code simple and succinct. You no longer have to write a
+			bunch of repetitious loops and DOM scripting library calls. With jQuery, you can
+			get right to the point and express yourself in the fewest possible characters.</p><p>The jQuery philosophy is certainly unique: It's designed to keep things simple and
+			reusable. When you understand and feel comfortable with the philosophy, you'll start
+			to see just how much jQuery can improve the way you program.</p><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">Back to top</a></p><p><a name="simplification"><span class="atitle">Some simple
+		simplifications</span></a></p><p>Here's a simple example of the impact jQuery can have on your code. To do something
+			really simple and common, such as attach a click event to every link in an area of
+			a page, you'd use plain JavaScript code and DOM scripting, as shown in
+			<a href="#list1">Listing 1</a>.</p><br><a name="list1"><b>Listing 1. DOM scripting without jQuery</b></a><br><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">var external_links = document.getElementById('external_links');
+var links = external_links.getElementsByTagName('a');
+for (var i=0;i &lt; links.length;i++) {
+    var link = links.item(i);
+    link.onclick = function() {
+        return confirm('You are going to visit: ' + this.href);
+    };
+}
+</pre></td></tr></tbody></table><br><p><a href="#list2">Listing 2</a> shows the same functionality achieved using jQuery.</p><br><a name="list2"><b>Listing 2. DOM scripting with jQuery</b></a><br><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('#external_links a').click(function() {
+    return confirm('You are going to visit: ' + this.href);
+});
+</pre></td></tr></tbody></table><br><p>Amazing, isn't it? With jQuery, you get right to the point, and express only what you
+			want the code to do without all the hassle. No need to loop over the
+			elements; the <code>click()</code> function takes care of that. Also no need to make multiple DOM scripting calls: All that you need is a
+			short string to define the elements to work on.</p><p>It can be a bit tricky to understand how this code even gets the job done. First,
+			you have the <code>$()</code> function—the most powerful function in
+			jQuery. Mostly, you use this function to select elements from the document. In this
+			example, the function is passed a string containing some Cascading Style Sheets
+			(CSS) syntax, and jQuery finds the elements as efficiently as possible.</p><p>If you know the basics of CSS selectors, this syntax should look familiar. In
+			<a href="#list2">Listing 2</a>, <code>#external_links</code> looks for the element with an
+			<code>id</code> of <code>external_links</code>. A space
+			followed by <code>a</code> tells jQuery to look for all the
+			<code>&lt;a&gt;</code> elements inside the <code>external_links</code>
+			element. That's a mouthful to say in English -- and even in DOM scripting -- but in
+			CSS, it couldn't be simpler.</p><p>The <code>$()</code> function returns a jQuery object containing all
+			the elements that match the CSS selector. A <i>jQuery object</i> is something like
+			an array but comes with a ton of special jQuery functions. For example, you can
+			assign a click handler function to each element in the jQuery object by calling the
+			<code>click</code> function.</p><p>You can also pass an element or an array of elements to the <code>$()</code> function, and it will wrap a jQuery object around the elements. You might want to
+			use this functionality to employ jQuery functions on things like the
+			<code>window</code> object. For example, you typically assign
+			the function to the load event like this:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">window.onload = function() {
+    // do this stuff when the page is done loading
+};
+</pre></td></tr></tbody></table><br><p>Using jQuery, you write the same code like this:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$(window).load(function() {
+    // run this when the whole page has been downloaded
+});
+</pre></td></tr></tbody></table><br><p>As you probably already know, waiting for the window to load is painfully slow,
+			because the whole page must finish loading, including all the images on the page.
+			Sometimes, you want the images to finish loading first, but most of the time, you
+			just need the Hypertext Markup Language (HTML) to be there. jQuery solves this
+			problem by creating a special <code>ready</code> event on the
+			document, used like this:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$(document).ready(function() {
+    // do this stuff when the HTML is all ready
+});
+</pre></td></tr></tbody></table><br><p>This code creates a jQuery object around the <code>document</code>
+			element, then sets up a function to call the instance when the HTML DOM document
+			is ready. You can call this function as many times as necessary. And, in true
+			jQuery style, a shortcut calls this function. Simply pass a
+			function to the <code>$()</code> function:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$(function() {
+    // run this when the HTML is done downloading
+});
+</pre></td></tr></tbody></table><br><p>So far, I've shown you three different ways to use the <code>$()</code>
+			function. With a fourth way, you can create an element using a string. The
+			result is a jQuery object containing that element. <a href="#list3">Listing 3</a>
+			shows an example that adds a paragraph to the page.</p><br><a name="list3"><b>Listing 3. Creating and appending a simple paragraph</b></a><br><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('&lt;p&gt;&lt;/p&gt;')
+    .html('Hey World!')
+    .css('background', 'yellow')
+    .appendTo("body");
+</pre></td></tr></tbody></table><br><p><a name="chaining"> </a>As you might have noticed from the previous example, another
+			powerful feature of jQuery is <i>method chaining.</i> Every time you call a method
+			on a jQuery object, the method returns the same jQuery object. This means that if
+			you need to call multiple methods on a jQuery object, you can do it without
+			re-typing the selector:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('#message').css('background', 'yellow').html('Hello!').show();
+</pre></td></tr></tbody></table><br><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">Back to top</a></p><p><a name="simplifying-ajax"><span class="atitle">Ajax made simple</span></a></p><p>Ajax couldn't be any easier than it is with jQuery. jQuery has a handful of
+			functions that make the easy stuff really easy and the complex stuff as simple
+			as possible.</p><p>A common use of Ajax is to load a chunk of HTML into an area of the page. To do
+			that, simply select the element you need and use the <code>load()</code>
+			function. Here's an example that updates some statistics:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('#stats').load('stats.html');
+</pre></td></tr></tbody></table><br><p>Often, you simply need to pass some parameters to a page on the server. As you'd
+			expect, this is incredibly simple in jQuery, too. You can use choose between
+			<code>$.post()</code> and <code>$.get()</code>,
+			depending on which method you need. You can pass an optional data object and
+			callback function if you need them. <a href="#list4">Listing 4</a> shows a simple
+			example that sends data and uses a callback.</p><br><a name="list4"><b>Listing 4. Sending data to a page with Ajax</b></a><br><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$.post('save.cgi', {
+    text: 'my string',
+    number: 23
+}, function() {
+    alert('Your data has been saved.');
+});
+</pre></td></tr></tbody></table><br><p>If you really want to do some complex Ajax scripting, you need the
+			<code>$.ajax()</code> function. You can specify
+			<code>xml</code>, <code>html</code>,
+			<code>script</code>, or <code>json</code>, and jQuery
+			automatically prepares the result for your callback function so that you can use it
+			right away. You can also specify <code>beforeSend</code>,
+			<code>error</code>, <code>success</code>, or
+			<code>complete</code> callbacks to give the user more feedback about
+			the Ajax experience. In addition, other parameters are available with which you can
+			set the timeout of an Ajax request or the "Last Modified" state of a page.
+			<a href="#list5">Listing 5</a> shows an example that retrieves an XML document
+			using some of the parameters that I mentioned.</p><br><a name="list5"><b>Listing 5. Complex Ajax made simple with $.ajax()</b></a><br><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$.ajax({
+    url: 'document.xml',
+    type: 'GET',
+    dataType: 'xml',
+    timeout: 1000,
+    error: function(){
+        alert('Error loading XML document');
+    },
+    success: function(xml){
+        // do something with xml
+    }
+});
+</pre></td></tr></tbody></table><br><p>When you get the XML back in the success callback, you can use jQuery to look
+			through the XML the same way you do with HTML. This makes it easy to work with
+			an XML document and integrate the contents and data into your Web site.
+			<a href="#list6">Listing 6</a> shows an expansion on the <code>success</code>
+			function that adds a list item to the Web page for each
+			<code>&lt;item&gt;</code> element in the XML.</p><br><a name="list6"><b>Listing 6. Working with XML using jQuery</b></a><br><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">success: function(xml){
+    $(xml).find('item').each(function(){
+        var item_text = $(this).text();
+
+        $('&lt;li&gt;&lt;/li&gt;')
+            .html(item_text)
+            .appendTo('ol');
+    });
+}
+</pre></td></tr></tbody></table><br><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">Back to top</a></p><p><a name="animation"><span class="atitle">Animate your HTML</span></a></p><p>You can use jQuery to take care of basic animations and effects. At the heart of the
+			animation code is the <code>animate()</code> function, which changes
+			any numeric CSS style value over time. For example, you can animate height, width,
+			opacity, or position. You can also specify the speed of the animation, either in
+			milliseconds or in one of the predefined speeds: slow, normal, or fast.</p><p>Here's an example that animates the height and width of an element at the same time.
+			Notice that there is no start value -- only the end value. The start values are
+			taken from the current size of the element. I've also attached a callback function.</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('#grow').animate({ height: 500, width: 500 }, "slow", function(){
+    alert('The element is done growing!');
+});
+</pre></td></tr></tbody></table><br><p>jQuery makes the more common animations easier with built-in functions. You can use
+			<code>show()</code> and <code>hide()</code> elements,
+			either instantly or at a specified speed. You can also make elements appear and
+			disappear by using <code>fadeIn()</code> and <code>fadeOut()</code>
+			or <code>slideDown()</code> and <code>slideUp()</code>,
+			depending on what kind of effect you're looking for. Here's a simple example that
+			slides down a navigation:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('#nav').slideDown('slow');
+</pre></td></tr></tbody></table><br><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">Back to top</a></p><p><a name="dom-and-events"><span class="atitle">DOM scripting and
+		event handling</span></a></p><p>jQuery is, perhaps, best at simplifying DOM scripting and event handling. Traversing
+			and manipulating the DOM is easy, and attaching, removing, and calling events is
+			completely natural and much less error prone than doing it by hand.</p><p>In essence, jQuery makes it easier to do things that are common with DOM scripting.
+			You can create elements and use the <code>append()</code> function to
+			link them to other elements, use <code>clone()</code> to duplicate
+			elements, set the contents with <code>html()</code>,
+			delete the contents with the <code>empty()</code> function,
+			delete the elements altogether with the <code>remove()</code>
+			function, and even use the <code>wrap()</code> function to wrap the
+			elements with another element.</p><p>Several functions are available for changing the contents of the jQuery object
+			itself by traversing the DOM. You can get all the <code>siblings()</code>,
+			<code>parents()</code>, or <code>children()</code> of an
+			element. You can also select the <code>next()</code> or
+			<code>prev()</code> sibling elements. Perhaps most powerful is the
+			<code>find()</code> function, which allows you to use a jQuery
+			selector to search through the descendants of elements in your jQuery object.</p><p>These functions become more powerful when used with the <code>end()</code>
+			function. This function is like an undo function, going back to the jQuery object
+			you had before you called <code>find()</code> or <code>parents()</code>
+			or one of the other traversing functions.</p><p>When used together with method chaining, these functions allow complex operations
+			to look simple. <a href="#list7">Listing 7</a> shows an example in which you find a
+			login form and manipulate several elements around it.</p><br><a name="list7"><b>Listing 7. Traversing and manipulating the DOM with ease</b></a><br><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('form#login')
+    // hide all the labels inside the form with the 'optional' class
+    .find('label.optional').hide().end()
+
+    // add a red border to any password fields in the form
+    .find('input:password').css('border', '1px solid red').end()
+
+    // add a submit handler to the form
+    .submit(function(){
+        return confirm('Are you sure you want to submit?');
+    });
+</pre></td></tr></tbody></table><br><p>Believe it or not, this example is just a single, chained, line of code spread out
+			with whitespace. First, I selected the login form. Then, I found the optional
+			labels inside it, hid them, and called <code>end()</code> to go back
+			to the form. I found the password field, made the border red, and again called
+			<code>end()</code> to go back to the form. Finally, I added a submit
+			event handler to the form. What's especially interesting about this (besides its
+			obvious brevity) is that jQuery completely optimizes all the query operations,
+			making sure that you don't have to find an element twice when everything is nicely
+			chained together.</p><p>Handling common events is as simple as calling a function like <code>click()</code>,
+			<code>submit()</code>, or <code>mouseover()</code> and
+			passing it an event handler function. Additionally, you have the option of assigning
+			a custom event handler using <code>bind('eventname', function(){})</code>.
+			You can remove certain events using <code>unbind('eventname')</code> or
+			all events with <code>unbind()</code>. For a complete list of ways to use
+			these and other functions, check out the jQuery application program interface (API)
+			documentation in the <a href="#resources">Resources</a>.</p><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">Back to top</a></p><p><a name="selectors"><span class="atitle">Unleash the power of
+		jQuery selectors</span></a></p><p>Often, you select elements by ID, such as <code>#myid</code>, or by
+			class name, such as <code>div.myclass</code>. However, jQuery has a
+			rather complex and complete selector syntax that allows you to select nearly any
+			combination of elements in a single selector.</p><p>jQuery's selector syntax is based heavily on CSS3 and XPath. The more you know about
+			CSS3 and XPath syntax, the better you'll be at using jQuery. For a complete list of
+			jQuery selectors, including CSS and XPath, check out the links in
+			<a href="#resources">Resources</a>.</p><p>CSS3 contains some syntax that not every browser supports, so you don't see it
+			often. However, you can still use CSS3 in jQuery to select elements, because jQuery has
+			its own, custom selector engine. For example, to add a dash inside every empty
+			column of a table, use the <code>:empty</code> pseudo-selector:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('td:empty').html('-');
+</pre></td></tr></tbody></table><br><p>What about finding every element that <b>doesn't</b> have a certain class? CSS3 has
+			a syntax for that, too, using the <code>:not</code> pseudo-selector.
+			Here's how you can hide every input that doesn't have a class of
+			<code>required</code>:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('input:not(.required)').hide();
+</pre></td></tr></tbody></table><br><p>You can also join multiple selectors into one using commas, just as in CSS. Here's a
+			simple example that hides every type of list on the page at the same time:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('ul, ol, dl').hide();
+</pre></td></tr></tbody></table><br><p>XPath is a powerful syntax for finding elements in a document. It's a bit different
+			than CSS and lets you do a few things you can't do with CSS. To add a border to the
+			parent element of every check box, you can use XPath's <code>/..</code>
+			syntax:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$("input:checkbox/..").css('border', '1px solid #777');
+</pre></td></tr></tbody></table><br><p>jQuery adds extra selectors that aren't available in CSS or XPath, as well. For
+			example, to make a table more readable, you would typically attach a different
+			class name to every odd or even row of the table -- otherwise known as <i>striping</i>
+			the table. Doing this with jQuery is a cinch, thanks to the
+			<code>:odd</code> pseudo-selector. This example changes the
+			background of every odd row in tables with a <code>striped</code>
+			class:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$('table.striped &gt; tr:odd').css('background', '#999999');
+</pre></td></tr></tbody></table><br><p>You can see how the power of
+jQuery selectors can simplify your code. Whatever selection of elements
+you want to affect, no matter how specific or obscure, you can probably
+find a way to define them using a single jQuery selector.</p><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">Back to top</a></p><p><a name="plugins"><span class="atitle">Extend jQuery with plug-ins</span></a></p><p>Unlike with most software, writing plug-ins for jQuery isn't a huge ordeal with a
+			complex API. In fact, jQuery plug-ins are so easy to write that you might want to
+			write a few to make your code even simpler. Here's the most basic jQuery
+			plug-in you can write:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$.fn.donothing = function(){
+    return this;
+};
+</pre></td></tr></tbody></table><br><p>Although simple, this plug-in does require a bit of explanation. First, to add a
+			function to every jQuery object, you must assign it to <code>$.fn</code>.
+			Next, this function must return <code>this</code> (the jQuery object)
+			so that it doesn't break <a href="#chaining">method chaining</a>.</p><p>You can easily build on top of this simple example. To write a plug-in to change the
+			background instead of using <code>css('background')</code>, you use this:</p><table border="0" cellpadding="0" cellspacing="0" width="60%"><tbody><tr><td class="code-outline"><pre class="displaycode">$.fn.background = function(bg){
+    return this.css('background', bg);
+};
+</pre></td></tr></tbody></table><br><p>Notice that I could just return the value from <code>css()</code>,
+			because it already returns the jQuery object. So, method chaining will still work
+			fine.</p><p>I recommend that you use jQuery plug-ins anytime you find that you repeat 
+			yourself. For example, you might use a plug-in if you're using the
+			<code>each()</code> function to do the same thing over and over.</p><p>Because jQuery plug-ins are so easy to write, hundreds of them are available for you
+			to use. jQuery has plug-ins for tabs, rounded corners, slide shows, tool tips, date
+			selectors, and probably anything else you can imagine. For a complete list of
+			plug-ins, check out the <a href="#resources">Resources</a>.</p><p>The most complex and most widely used plug-in is Interface, an animation plug-in
+			that handles sorting, drag-and-drop functionality, complex effects, and other
+			interesting and complex user interfaces (UIs). Interface is to jQuery what
+			Scriptaculous is to Prototype.</p><p>Also popular and useful is the Form plug-in, which allows you to easily submit a
+			form in the background using Ajax. This plug-in takes care of the common situation
+			in which you need to hijack the submit event of a form, then find all the different
+			input fields and use them to construct an Ajax call.</p><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">Back to top</a></p><p><a name="life-after-jquery"><span class="atitle">Life after jQuery</span></a></p><p>I've
+only scratched the surface of what is possible with jQuery. jQuery is
+fun to use, because you always learn new tricks and features that seem
+so natural. jQuery simplifies your JavaScript and Ajax programming
+completely from the first moment you use it; every time you learn
+something new, your code gets a bit simpler.</p><p>After learning jQuery, I've had a lot more fun programming in the JavaScript
+			language. All the boring stuff is taken care of, so I can focus on coding the juicy
+			stuff. With jQuery, I can barely remember the last time I wrote a
+			<code>for</code> loop. I even cringe at the thought of working with
+			other JavaScript libraries. jQuery has honestly and truly changed the way I look at
+			JavaScript programing forever.</p><!-- CMA ID: 205662 --> <!-- Site ID: 1 --> <!-- XSLT stylesheet used to transform this file: dw-document-html-6.0.xsl -->
+<br>
+<p><a name="resources"><span class="atitle">Resources</span></a></p><p><b>Learn</b></p><ul><li><a href="http://www.ibm.com/developerworks/xml">developerWorks XML zone</a>: Learn all about XML at the developerWorks XML zone.<br><br></li><li><a href="http://docs.jquery.com/Main_Page">jQuery API documentation</a>: Explore the complete documentation of jQuery with links to tutorials as well as the API reference.<br><br></li><li><a href="http://docs.jquery.com/Tutorials">jQuery tutorials</a>: Check out a great collection of multilingual jQuery tutorials, including 40 in English.<br><br></li><li><a href="http://visualjquery.com/">Visual jQuery</a>: Read an interactive and easy-to-navigate jQuery API reference.<br><br></li><li><a href="http://www.ibm.com/certify/certs/xmsdreltop.shtml">IBM XML certification</a>:Find out how you can become an IBM-Certified Developer in XML and related technologies.<br><br></li><li><a href="http://www.ibm.com/developerworks/views/xml/library.jsp">XML technical library</a>: See the developerWorks XML Zone for a wide range of technical articles and tips, tutorials, standards, and IBM Redbooks.<br><br></li></ul><p><b>Get products and technologies</b></p><ul><li><a href="http://jquery.com/">jQuery</a>: Visit the main jQuery site and download the source code.<br><br></li><li><a href="http://docs.jquery.com/DOM/Traversing/Selectors">Selectors</a>: Get a complete list of all the selectors you can use with jQuery, including CSS3 and XPath selectors.<br><br></li><li><a href="http://docs.jquery.com/Plugins">jQuery plug-ins</a>: Find a nearly complete list of available jQuery plug-ins.<br><br></li><li><a href="http://interface.eyecon.ro/">Interface</a>: Try the ultimate jQuery plug-in for animation, effects, drag-and-drop functionality, and UIs.<br><br></li><li><a href="http://jquery.com/dev/svn/trunk/plugins/form/form.js?format=txt">Form plug-in</a>: Get a jQuery plug-in that lets you submit a form using Ajax.<br><br></li></ul><p><b>Discuss</b></p><ul><li><a href="http://jquery.com/blog/">jQuery blog</a>: Frequent the official jQuery blog for regular news and updates.<br><br></li><li><a href="http://www.ibm.com/developerworks/forums/dw_xforums.jsp">XML zone discussion forums</a>: Participate in any of several XML-centered forums.<br><br></li></ul>
+<p><a name="author"><span class="atitle">About the author</span></a></p><div class="ibm-container ibm-portrait-module ibm-alternate-two"><div class="ibm-container-body"><img src="jquery-dev_files/p-jskinner.jpg" alt="Photo of Jesse Skinner" width="64" height="80"><p><a name="author1"></a>Jesse
+Skinner is a freelance Web developer specializing in JavaScript and
+CSS. He spends his time expatriating from Canada to Germany, making the
+Web more fun to use, and unraveling the ancient mysteries of CSS
+browser compatibility. If you'd like more information about Jesse or to
+read more about Web development, check out his blog at <a href="http://www.thefutureoftheweb.com/">The Future of the Web</a>.</p></div></div>
+<!-- MAIN_COLUMN_CONTENT_END -->
+
+<!-- INLINE_COMMENTS_START -->
+<p class="ibm-no-print"><span class="atitle"><a name="icomments">Comments</a></span></p>
+<div id="dw-icomments-container" class="ibm-no-print">
+<div class="ibm-alternate-rule"><hr></div>
+<div class="ibm-alternate-rule"><hr></div>
+<!-- Comment_Script -->
+<a id="comments" href="http://www.ibm.com/developerworks/library/comments"></a>
+<script language="JavaScript" src="jquery-dev_files/insertcomment.js" type="text/javascript">//</script>
+<div id="threadShow"><div id="cmtTog" style=""><p><span id="numCmts">3</span>&nbsp;comments <span class="dw-bar">|</span> <a href="http://www.ibm.com/developerworks/dwwi/DWAuthRouter?m=loginpage&amp;lang=&amp;d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html%23icomments" style="display: none;" class="loginLk">Sign in</a><a id="addCmtLk" class="dw-icomment-link">Add comment</a><a class="dw-icomment-report" href="http://www.ibm.com/developerworks/forums/forum.jspa?forumID=1317">Report inappropriate content</a></p><div class="ibm-alternate-rule"><hr></div><div style="display: none;" id="commentForm"><div class="ibm-container"><h2>Add a comment</h2><div class="ibm-container-body"><p>The field indicated with an asterisk (<span class="ibm-required">*</span>) is required to complete this transaction.</p><span id="infoCmt"></span><div class="ibm-rule"><hr></div><form method="post" action="" class="ibm-column-form" enctype="multipart/form-data" focus="name" name="form"><p><label for="newCmt">Comment:<span class="ibm-required">*</span></label><br><textarea name="newCmt" id="newCmt" cols="120" rows="4"></textarea></p><div class="ibm-alternate-rule"><hr></div><p class="ibm-buttons-row"><input value="Post" name="postCmt" class="ibm-btn-arrow-sec" id="postCmt" type="button"><span class="ibm-sep">&nbsp;</span><input value="Clear comment" name="clearCmt" class="ibm-btn-cancel-sec" id="clearCmt" type="button"><span class="ibm-sep">&nbsp;</span><input value="Cancel" name="cancelCmt" class="ibm-btn-cancel-sec" id="cancelCmt" type="button"></p></form></div></div></div><div id="cmtSect"><div class="comment"><div class="dw-icomment-container"><table class="dw-icomment-body" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td><p>nice stuff nice and helpful http://exmmedia.com</p></td></tr><tr><td><p class="ibm-item-note-alternate">Posted by <b><a href="http://www.ibm.com/developerworks/forums/profile.jspa?userID=292565">exmmedia</a></b> on 22 April 2010</p></td></tr></tbody></table></div></div><div class="comment"><div class="dw-icomment-container"><table class="dw-icomment-body" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td><p>Thank you for this article. Really helpful.</p></td></tr><tr><td><p class="ibm-item-note-alternate">Posted by <b><a href="http://www.ibm.com/developerworks/forums/profile.jspa?userID=272860">Melwin Dmello</a></b> on 03 February 2010</p></td></tr></tbody></table></div></div><div class="comment"><div class="dw-icomment-container"><table class="dw-icomment-body" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td><p>good read.</p></td></tr><tr><td><p class="ibm-item-note-alternate">Posted by <b>helloyim</b> on 17 August 2009</p></td></tr></tbody></table></div></div></div><div id="paging"><p><a style="display: none;" id="lastCmts" class="dw-icomment-link">Show 5 most recent comments</a><span style="display: none;" id="cmtDivider"> <span class="dw-bar">|</span> </span><a style="display: none;" id="nextCmts" class="dw-icomment-link">Show next 5 comments</a><span style="display: none;" id="cmtDivider2"> <span class="dw-bar">|</span> </span><a style="display: none;" id="viewAllCmts" class="dw-icomment-link">Show all comments</a></p></div><p><a href="http://www.ibm.com/developerworks/dwwi/DWAuthRouter?m=loginpage&amp;lang=&amp;d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html%23icomments" style="display: none;" class="loginLk">Sign in</a><a id="addCmtLk2" href="#icomments">Add comment</a></p><div class="ibm-alternate-rule"><hr></div><div class="ibm-alternate-rule"><hr></div></div></div>
+<script language="JavaScript" type="text/javascript">
+// <![CDATA[
+ jQuery('threadShow').insertComment('95%',5,'nCmts','icomments');
+// ]]>
+</script>
+</div>
+<!-- INLINE_COMMENTS_END -->
+
+<p class="ibm-ind-link ibm-back-to-top"><a class="ibm-anchor-up-link" href="#ibm-pcon">Back to top</a></p>
+<p><a href="http://www.ibm.com/developerworks/ibm/trademarks/">Trademarks</a> &nbsp;|&nbsp; <a href="https://www.ibm.com/developerworks/mydeveloperworks/terms/">My developerWorks terms and conditions</a></p>
+
+<!-- Overlays -->
+<!-- Zone/Leaf_Interest_Overlay_Start -->
+<div class="ibm-common-overlay ibm-no-print" id="dwmyinterestadd">
+<div class="ibm-head"><p><a class="ibm-common-overlay-close" href="#close">Close [x]</a></p></div>
+<div class="ibm-body">
+<div class="ibm-main">
+<a class="ibm-access" name="dwmyinterestaddhelp">Help: Update or add to My dW interests</a>   
+<div class="ibm-title"><h1>What's this?</h1></div>
+<div class="ibm-container ibm-alternate">
+<p>This little timesaver lets you update your My developerWorks profile
+with just one click! The general subject of this content (AIX and UNIX,
+Information Management, Lotus, Rational, Tivoli, WebSphere, Java,
+Linux, Open source, SOA and Web services, Web development, or XML) will
+be added to the interests section of your profile, if it's not there
+already. You only need to be logged in to My developerWorks.</p>
+<p>And what's the point of adding your interests to your profile?
+That's how you find other users with the same interests as yours, and
+see what they're reading and contributing to the community. Your
+interests also help us recommend relevant developerWorks content to you.</p>
+<p><a href="https://www.ibm.com/developerworks/mydeveloperworks/profiles/home.do?lang=en">View your My developerWorks profile</a></p>
+<p class="ibm-access"><a href="#interestShow">Return from help</a></p>
+</div> 
+</div>
+</div>
+<div class="ibm-footer"></div>
+</div>
+
+<div class="ibm-common-overlay ibm-no-print" id="dwmyinterestremove">
+<div class="ibm-head"><p><a class="ibm-common-overlay-close" href="#close">Close [x]</a></p></div>
+<div class="ibm-body">
+<div class="ibm-main">
+<a class="ibm-access" name="dwmyinterestremovehelp">Help: Remove from My dW interests</a> 
+<div class="ibm-title"><h1>What's this?</h1></div>
+<div class="ibm-container ibm-alternate">
+<p>Removing this interest does not alter your profile, but rather
+removes this piece of content from a list of all content for which
+you've indicated interest. In a future enhancement to My
+developerWorks, you'll be able to see a record of that content.</p>
+<p><a href="https://www.ibm.com/developerworks/mydeveloperworks/profiles/home.do?lang=en">View your My developerWorks profile</a></p>
+<p class="ibm-access"><a href="#interestShow">Return from help</a></p>
+</div> 
+</div>
+</div>
+<div class="ibm-footer"></div>
+</div>
+<!-- Zone/Leaf_Interest_Overlay_End --></div>
+<!-- MAIN_COLUMN_CONTAINER_END -->
+
+<!-- Rating_Meta_BEGIN -->
+<!--Rating_Meta_BEGIN--><div class="metavalue">static.content.url=http://www.ibm.com/developerworks/js/artrating/</div><div class="metavalue">SITE_ID=1</div><div class="metavalue">Zone=XML, Web development</div><div class="metavalue">ArticleID=205662</div><div class="metavalue">ArticleTitle=Simplify Ajax development with jQuery</div><div class="metavalue">publish-date=04102007</div><div class="metavalue">author1-email=jesse@thefutureoftheweb.com</div><div class="metavalue">author1-email-cc=dwxed@us.ibm.com</div><script language="javascript" type="text/javascript">document.write('<div class="metavalue">url='+location.href.replace('<', '%3C')+'</div>');</script><div class="metavalue">url=http://www.ibm.com/developerworks/library/x-ajaxjquery.html</div><!--Rating_Meta_END-->
+<!-- Rating_Meta_END -->
+
+</div>
+<!-- MAIN_COLUMN_END-->
+
+<!-- RIGHT_COLUMN_BEGIN -->
+<div id="ibm-content-sidebar">
+<div style="display: block;" id="ibm-social-tools-sidebar" class="ibm-share-this"><ul><li><a rel="print" href="#" title="Print this page" class="ibm-share-print"></a></li><li><a rel="email" href="#" title="E-mail this page" class="ibm-share-email"></a></li><li><a rel="digg" href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html&amp;title=Simplify%20Ajax%20development%20with%20jQuery" title="Digg" class="ibm-share-digg"></a></li><li><a rel="facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html&amp;t=Simplify%20Ajax%20development%20with%20jQuery" title="Facebook" class="ibm-share-facebook"></a></li><li><a rel="twitter" href="http://twitter.com/home?status=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html%20-%20Simplify%20Ajax%20development%20with%20jQuery" title="Twitter" class="ibm-share-twitter"></a></li><li><a rel="delicious" href="http://delicious.com/post?url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html&amp;title=Simplify%20Ajax%20development%20with%20jQuery" title="Delicious" class="ibm-share-delicious"></a></li><li><a rel="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html&amp;title=Simplify%20Ajax%20development%20with%20jQuery" title="Linked In" class="ibm-share-linkedin"></a></li></ul></div>
+
+<!-- RIGHT_COLUMN_CONTENT_BEGIN --> 
+<div class="ibm-container"><h2>Table of contents</h2><div class="ibm-container-body"><img alt="" src="jquery-dev_files/c.gif" width="1" height="1"><ul class="ibm-bullet-list"><li><a class="ibm-feature-link" href="#whats-jquery">What's jQuery?</a></li><li><a class="ibm-feature-link" href="#simplification">Some simple
+		simplifications</a></li><li><a class="ibm-feature-link" href="#simplifying-ajax">Ajax made simple</a></li><li><a class="ibm-feature-link" href="#animation">Animate your HTML</a></li><li><a class="ibm-feature-link" href="#dom-and-events">DOM scripting and
+		event handling</a></li><li><a class="ibm-feature-link" href="#selectors">Unleash the power of
+		jQuery selectors</a></li><li><a class="ibm-feature-link" href="#plugins">Extend jQuery with plug-ins</a></li><li><a class="ibm-feature-link" href="#life-after-jquery">Life after jQuery</a></li><li><a class="ibm-feature-link" href="#resources">Resources</a></li><li><a class="ibm-feature-link" href="#author">About the author</a></li><li><a class="ibm-feature-link" href="#icomments">Comments</a></li></ul></div></div>
+<!--XSLT stylesheet used to transform this content: s-nextsteps.xsl--><div class="ibm-container"><h2>Next steps from IBM</h2><div class="ibm-container-body"><img alt="" src="jquery-dev_files/spot-nextsteps.jpg" border="0" width="188" height="58"><p>Create rich Internet applications using WebSphere Portal Express Web 2.0 technologies.</p><div class="ibm-rule"><hr></div><ul class="ibm-bullet-list"><li><a href="http://www.ibm.com/developerworks/downloads/ls/wpe/" class="ibm-feature-link">Try: WebSphere Portal Express</a></li><li><a href="http://www.ibm.com/developerworks/websphere/library/techarticles/0606_bishop/0606_bishop.html" class="ibm-feature-link">Article: Get started using Ajax and WebSphere Portal Express</a></li><li><a href="http://www.ibm.com/developerworks/websphere/library/tutorials/0608_bishop/0608_bishop.html" class="ibm-feature-link">Tutorial: Quickly build a an Ajax-enabled WebSphere Portal Express Web application</a></li><li><a href="http://www.ibm.com/developerworks/offers/lp/demos/summary/ajax.html" class="ibm-feature-link">Demo: Architecture, design, and construction using the IBM Rational Software Delivery Platform: AJAX</a></li><li><a href="http://www.ibm.com/software/genservers/portalexpress/portalexpress-popup.html" class="ibm-feature-link">Buy: WebSphere Portal Express</a></li></ul></div></div>
+<!--XSLT stylesheet used to transform this content: s-community.xsl--><div class="ibm-container ibm-show-hide"><h2><a class="ibm-show-active" href="#show-hide" name="dw-community-forums">Related forums</a></h2><div class="ibm-container-body"><img alt="" src="jquery-dev_files/c.gif" border="0" width="1" height="1"><ul class="ibm-bullet-list"><li><a class="ibm-feature-link" href="http://www.ibm.com/developerworks/forums/forum.jspa?forumID=965">Ajax Forum</a></li></ul><div class="ibm-rule"><hr></div><p class="ibm-ind-link"><a href="http://www.ibm.com/developerworks/forums/" class="ibm-forward-link">All developerWorks forums</a></p></div><h2 style="border-top: medium none;"><a href="#show-hide" name="dw-community-spaces">Related spaces</a></h2><div style="display: none;" class="ibm-container-body"><img alt="" src="jquery-dev_files/c.gif" border="0" width="1" height="1"><ul class="ibm-bullet-list"><li><a class="ibm-feature-link" href="http://www.ibm.com/developerworks/spaces/ajax">Ajax resource center</a></li></ul><div class="ibm-rule"><hr></div><p class="ibm-ind-link"><a href="http://www.ibm.com/developerworks/spaces/" class="ibm-forward-link">All developerWorks spaces</a></p></div></div>
+<!-- Tagging_Start -->
+<div id="dw-tag-cloud-container" class="ibm-container"><h2>Tags</h2>
+<div id="dw-tag-help"><a class="dwauthor" rel="#tagtip" id="dwtagtip"><img alt="Help" src="jquery-dev_files/help_icon.gif" align="top" width="16" height="16"></a></div>
+<div style="display: none;" id="tagtip" class="dwauthor-onload-state ibm-no-print">Use the <strong>search field</strong> to find all types of content in My developerWorks with that tag.<p>Use the <strong>slider bar</strong> to see more or fewer tags.</p><p>For articles in technology zones (such as Java technology, Linux, Open source, XML), <strong>Popular tags</strong> shows the top tags 
+for <em>all technology zones</em>.  For articles in product zones (such as Info Mgmt, Rational, WebSphere), <strong>Popular tags</strong> shows the top tags for <em>just that product zone</em>.</p><p>For articles in technology zones (such as Java technology, Linux, Open source, XML), <strong>My tags</strong> shows your tags for <em>all technology zones</em>.  For articles in product zones (such as Info Mgmt, Rational, WebSphere), <strong>My tags</strong> shows your tags for <em>just that product zone</em>.</p></div>
+<div class="ibm-access">Use the search field to find all types of content in My developerWorks with that tag.  <em>Popular tags</em> shows the top tags for this particular content zone (for example, Java technology, Linux, WebSphere).  <em>My tags</em> shows your tags for this particular content zone (for example, Java technology, Linux, WebSphere).</div>
+<div class="ibm-container-body">
+<div class="dw-tag-search"><form action="//www.ibm.com/developerworks/mydeveloperworks/bookmarks/html?lang=en" method="get" id="actualtagform" onsubmit="popupform(this, 'join')">
+<p><label for="tagfield"><strong>Search all tags</strong></label><input id="tagfield" name="tag" maxlength="20" size="17" type="text">&nbsp;<input src="jquery-dev_files/short-btn.gif" class="ibm-btn-view" alt="submit search" title="submit search" value="Search" type="image"></p></form></div>
+<div class="ibm-rule"><hr></div>
+<div id="dw-tag-select">
+<div id="dw-tag-select-popular"><p><strong>Popular article tags</strong>&nbsp;|&nbsp;<br><a id="a-my" href="javascript:;">My article tags</a><a href="#dw-tag-access" class="ibm-access">Skip to tags list</a></p></div>
+<div id="dw-tag-select-my" class="dw-hidetag"><p><a id="a-popular" href="javascript:;">Popular article tags</a>&nbsp;|&nbsp;<br><strong>My article tags</strong></p><a href="#dw-tag-access" class="ibm-access">Skip to tags list</a></div><div id="dw-tag-access" class="ibm-access"><h2>Popular tags</h2><ul>
+					
+						
+							
+							
+							
+							
+								
+							
+							
+						
+				<li class="f1-75">
+					
+					<a title="ajax 119" class="lotusF4 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=ajax&amp;lang=en')">
+					
+						
+						
+							ajax	
+						
+					
+					<span class="ibm-access">(119)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f2-17">
+					
+					<a title="and 25" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=and&amp;lang=en')">
+					
+						
+						
+							and	
+						
+					
+					<span class="ibm-access">(25)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f3-32">
+					
+					<a title="android 38" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=android&amp;lang=en')">
+					
+						
+						
+							android	
+						
+					
+					<span class="ibm-access">(38)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f4-10">
+					
+					<a title="apache 21" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=apache&amp;lang=en')">
+					
+						
+						
+							apache	
+						
+					
+					<span class="ibm-access">(21)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f5-7">
+					
+					<a title="api 19" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=api&amp;lang=en')">
+					
+						
+						
+							api	
+						
+					
+					<span class="ibm-access">(19)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f6-7">
+					
+					<a title="application_and_information_integration 19" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=application_and_information_integration&amp;lang=en')">
+					
+						
+							application_an...	
+						
+						
+					
+					<span class="ibm-access">(19)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+							
+								
+							
+						
+				<li class="f7-85">
+					
+					<a title="application_development 157" class="lotusF5 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=application_development&amp;lang=en')">
+					
+						
+							application_...	
+						
+						
+					
+					<span class="ibm-access">(157)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+								
+							
+							
+						
+				<li class="f8-66">
+					
+					<a title="architecture 95" class="lotusF4 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=architecture&amp;lang=en')">
+					
+						
+						
+							architecture	
+						
+					
+					<span class="ibm-access">(95)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f9-12">
+					
+					<a title="atom 22" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=atom&amp;lang=en')">
+					
+						
+						
+							atom	
+						
+					
+					<span class="ibm-access">(22)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f10-39">
+					
+					<a title="cloud 46" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=cloud&amp;lang=en')">
+					
+						
+						
+							cloud	
+						
+					
+					<span class="ibm-access">(46)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f11-42">
+					
+					<a title="cloud_computing 50" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=cloud_computing&amp;lang=en')">
+					
+						
+							cloud_computi...	
+						
+						
+					
+					<span class="ibm-access">(50)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f12-9">
+					
+					<a title="components 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=components&amp;lang=en')">
+					
+						
+						
+							components	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f13-9">
+					
+					<a title="concurrency 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=concurrency&amp;lang=en')">
+					
+						
+						
+							concurrency	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f14-9">
+					
+					<a title="configuration_and_administration 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=configuration_and_administration&amp;lang=en')">
+					
+						
+							configuration_...	
+						
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f15-1">
+					
+					<a title="data 16" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=data&amp;lang=en')">
+					
+						
+						
+							data	
+						
+					
+					<span class="ibm-access">(16)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f16-44">
+					
+					<a title="databases_and_data_management 52" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=databases_and_data_management&amp;lang=en')">
+					
+						
+							databases_and...	
+						
+						
+					
+					<span class="ibm-access">(52)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f17-23">
+					
+					<a title="design 30" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=design&amp;lang=en')">
+					
+						
+						
+							design	
+						
+					
+					<span class="ibm-access">(30)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f18-9">
+					
+					<a title="development 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=development&amp;lang=en')">
+					
+						
+						
+							development	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f19-14">
+					
+					<a title="dojo 23" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=dojo&amp;lang=en')">
+					
+						
+						
+							dojo	
+						
+					
+					<span class="ibm-access">(23)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f20-25">
+					
+					<a title="dom_(document_object_model) 31" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=dom_%2528document_object_model%2529&amp;lang=en')">
+					
+						
+							dom_(document...	
+						
+						
+					
+					<span class="ibm-access">(31)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f21-55">
+					
+					<a title="eclipse 70" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=eclipse&amp;lang=en')">
+					
+						
+						
+							eclipse	
+						
+					
+					<span class="ibm-access">(70)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f22-3">
+					
+					<a title="editing 17" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=editing&amp;lang=en')">
+					
+						
+						
+							editing	
+						
+					
+					<span class="ibm-access">(17)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f23-15">
+					
+					<a title="frameworks 24" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=frameworks&amp;lang=en')">
+					
+						
+						
+							frameworks	
+						
+					
+					<span class="ibm-access">(24)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f24-37">
+					
+					<a title="general_programming 43" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=general_programming&amp;lang=en')">
+					
+						
+							general_progr...	
+						
+						
+					
+					<span class="ibm-access">(43)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f25-5">
+					
+					<a title="google 18" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=google&amp;lang=en')">
+					
+						
+						
+							google	
+						
+					
+					<span class="ibm-access">(18)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f26-18">
+					
+					<a title="green_it 26" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=green_it&amp;lang=en')">
+					
+						
+						
+							green_it	
+						
+					
+					<span class="ibm-access">(26)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f27-7">
+					
+					<a title="groovy 19" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=groovy&amp;lang=en')">
+					
+						
+						
+							groovy	
+						
+					
+					<span class="ibm-access">(19)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f28-12">
+					
+					<a title="gwt 22" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=gwt&amp;lang=en')">
+					
+						
+						
+							gwt	
+						
+					
+					<span class="ibm-access">(22)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f29-40">
+					
+					<a title="html 47" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=html&amp;lang=en')">
+					
+						
+						
+							html	
+						
+					
+					<span class="ibm-access">(47)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f30-5">
+					
+					<a title="html5 18" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=html5&amp;lang=en')">
+					
+						
+						
+							html5	
+						
+					
+					<span class="ibm-access">(18)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f31-3">
+					
+					<a title="ibm 17" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=ibm&amp;lang=en')">
+					
+						
+						
+							ibm	
+						
+					
+					<span class="ibm-access">(17)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+							
+								
+							
+						
+				<li class="f32-98">
+					
+					<a title="java 218" class="lotusF5 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=java&amp;lang=en')">
+					
+						
+						
+							java	
+						
+					
+					<span class="ibm-access">(218)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+								
+							
+							
+						
+				<li class="f33-61">
+					
+					<a title="java_technology 83" class="lotusF4 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=java_technology&amp;lang=en')">
+					
+						
+							java_technol...	
+						
+						
+					
+					<span class="ibm-access">(83)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f34-54">
+					
+					<a title="javascript 69" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=javascript&amp;lang=en')">
+					
+						
+						
+							javascript	
+						
+					
+					<span class="ibm-access">(69)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f35-15">
+					
+					<a title="jquery 24" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=jquery&amp;lang=en')">
+					
+						
+						
+							jquery	
+						
+					
+					<span class="ibm-access">(24)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f36-15">
+					
+					<a title="jsf 24" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=jsf&amp;lang=en')">
+					
+						
+						
+							jsf	
+						
+					
+					<span class="ibm-access">(24)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f37-12">
+					
+					<a title="json 22" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=json&amp;lang=en')">
+					
+						
+						
+							json	
+						
+					
+					<span class="ibm-access">(22)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f38-9">
+					
+					<a title="json_(javascript_object_notation) 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=json_%2528javascript_object_notation%2529&amp;lang=en')">
+					
+						
+							json_(javascri...	
+						
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f39-3">
+					
+					<a title="kernel 17" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=kernel&amp;lang=en')">
+					
+						
+						
+							kernel	
+						
+					
+					<span class="ibm-access">(17)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+							
+								
+							
+						
+				<li class="f40-87">
+					
+					<a title="linux 166" class="lotusF5 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=linux&amp;lang=en')">
+					
+						
+						
+							linux	
+						
+					
+					<span class="ibm-access">(166)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f41-14">
+					
+					<a title="mashups 23" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=mashups&amp;lang=en')">
+					
+						
+						
+							mashups	
+						
+					
+					<span class="ibm-access">(23)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f42-19">
+					
+					<a title="messaging 27" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=messaging&amp;lang=en')">
+					
+						
+						
+							messaging	
+						
+					
+					<span class="ibm-access">(27)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f43-3">
+					
+					<a title="multimedia 17" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=multimedia&amp;lang=en')">
+					
+						
+						
+							multimedia	
+						
+					
+					<span class="ibm-access">(17)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f44-1">
+					
+					<a title="namespaces 16" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=namespaces&amp;lang=en')">
+					
+						
+						
+							namespaces	
+						
+					
+					<span class="ibm-access">(16)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+								
+							
+							
+						
+				<li class="f45-69">
+					
+					<a title="open_source 101" class="lotusF4 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=open_source&amp;lang=en')">
+					
+						
+						
+							open_source	
+						
+					
+					<span class="ibm-access">(101)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f46-12">
+					
+					<a title="parsing 22" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=parsing&amp;lang=en')">
+					
+						
+						
+							parsing	
+						
+					
+					<span class="ibm-access">(22)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f47-1">
+					
+					<a title="part 16" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=part&amp;lang=en')">
+					
+						
+						
+							part	
+						
+					
+					<span class="ibm-access">(16)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f48-15">
+					
+					<a title="patterns 24" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=patterns&amp;lang=en')">
+					
+						
+						
+							patterns	
+						
+					
+					<span class="ibm-access">(24)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f49-38">
+					
+					<a title="performance 45" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=performance&amp;lang=en')">
+					
+						
+						
+							performance	
+						
+					
+					<span class="ibm-access">(45)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f50-3">
+					
+					<a title="perl 17" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=perl&amp;lang=en')">
+					
+						
+						
+							perl	
+						
+					
+					<span class="ibm-access">(17)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f51-55">
+					
+					<a title="php 71" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=php&amp;lang=en')">
+					
+						
+						
+							php	
+						
+					
+					<span class="ibm-access">(71)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f52-38">
+					
+					<a title="php_(hypertext_preprocessor) 45" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=php_%2528hypertext_preprocessor%2529&amp;lang=en')">
+					
+						
+							php_(hypertex...	
+						
+						
+					
+					<span class="ibm-access">(45)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f53-10">
+					
+					<a title="programming 21" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=programming&amp;lang=en')">
+					
+						
+						
+							programming	
+						
+					
+					<span class="ibm-access">(21)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f54-32">
+					
+					<a title="python 38" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=python&amp;lang=en')">
+					
+						
+						
+							python	
+						
+					
+					<span class="ibm-access">(38)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f55-9">
+					
+					<a title="read 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=read&amp;lang=en')">
+					
+						
+						
+							read	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f56-33">
+					
+					<a title="rest 39" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=rest&amp;lang=en')">
+					
+						
+						
+							rest	
+						
+					
+					<span class="ibm-access">(39)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f57-5">
+					
+					<a title="rss_(really_simple_syndication) 18" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=rss_%2528really_simple_syndication%2529&amp;lang=en')">
+					
+						
+							rss_(really_si...	
+						
+						
+					
+					<span class="ibm-access">(18)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f58-32">
+					
+					<a title="schemas 38" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=schemas&amp;lang=en')">
+					
+						
+						
+							schemas	
+						
+					
+					<span class="ibm-access">(38)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f59-31">
+					
+					<a title="security 37" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=security&amp;lang=en')">
+					
+						
+						
+							security	
+						
+					
+					<span class="ibm-access">(37)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f60-30">
+					
+					<a title="services 36" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=services&amp;lang=en')">
+					
+						
+						
+							services	
+						
+					
+					<span class="ibm-access">(36)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f61-53">
+					
+					<a title="soa 67" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=soa&amp;lang=en')">
+					
+						
+						
+							soa	
+						
+					
+					<span class="ibm-access">(67)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f62-17">
+					
+					<a title="soa_(service-oriented_architecture) 25" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=soa_%2528service-oriented_architecture%2529&amp;lang=en')">
+					
+						
+							soa_(service-o...	
+						
+						
+					
+					<span class="ibm-access">(25)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f63-1">
+					
+					<a title="soap 16" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=soap&amp;lang=en')">
+					
+						
+						
+							soap	
+						
+					
+					<span class="ibm-access">(16)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f64-43">
+					
+					<a title="soap_(simple_object_access_protocol) 51" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=soap_%2528simple_object_access_protocol%2529&amp;lang=en')">
+					
+						
+							soap_(simple_...	
+						
+						
+					
+					<span class="ibm-access">(51)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f65-9">
+					
+					<a title="spring 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=spring&amp;lang=en')">
+					
+						
+						
+							spring	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f66-30">
+					
+					<a title="standards 36" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=standards&amp;lang=en')">
+					
+						
+						
+							standards	
+						
+					
+					<span class="ibm-access">(36)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f67-31">
+					
+					<a title="tips 37" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=tips&amp;lang=en')">
+					
+						
+						
+							tips	
+						
+					
+					<span class="ibm-access">(37)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f68-5">
+					
+					<a title="to 18" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=to&amp;lang=en')">
+					
+						
+						
+							to	
+						
+					
+					<span class="ibm-access">(18)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f69-57">
+					
+					<a title="web 74" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=web&amp;lang=en')">
+					
+						
+						
+							web	
+						
+					
+					<span class="ibm-access">(74)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f70-42">
+					
+					<a title="web_2.0 49" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=web_2.0&amp;lang=en')">
+					
+						
+						
+							web_2.0	
+						
+					
+					<span class="ibm-access">(49)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f71-42">
+					
+					<a title="web_development 49" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=web_development&amp;lang=en')">
+					
+						
+							web_developme...	
+						
+						
+					
+					<span class="ibm-access">(49)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+								
+							
+							
+						
+				<li class="f72-72">
+					
+					<a title="web_services 111" class="lotusF4 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=web_services&amp;lang=en')">
+					
+						
+						
+							web_services	
+						
+					
+					<span class="ibm-access">(111)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f73-14">
+					
+					<a title="websphere 23" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=websphere&amp;lang=en')">
+					
+						
+						
+							websphere	
+						
+					
+					<span class="ibm-access">(23)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f74-9">
+					
+					<a title="wireless 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=wireless&amp;lang=en')">
+					
+						
+						
+							wireless	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f75-14">
+					
+					<a title="xhtml_(extensible_html) 23" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xhtml_%2528extensible_html%2529&amp;lang=en')">
+					
+						
+							xhtml_(extensi...	
+						
+						
+					
+					<span class="ibm-access">(23)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+							
+								
+							
+						
+				<li class="f76-100">
+					
+					<a title="xml 234" class="lotusF5 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xml&amp;lang=en')">
+					
+						
+						
+							xml	
+						
+					
+					<span class="ibm-access">(234)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f77-21">
+					
+					<a title="xpath_(xml_path_language) 28" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xpath_%2528xml_path_language%2529&amp;lang=en')">
+					
+						
+							xpath_(xml_pa...	
+						
+						
+					
+					<span class="ibm-access">(28)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f78-5">
+					
+					<a title="xquery_(xml_query_language) 18" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xquery_%2528xml_query_language%2529&amp;lang=en')">
+					
+						
+							xquery_(xml_qu...	
+						
+						
+					
+					<span class="ibm-access">(18)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f79-14">
+					
+					<a title="xslt 23" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xslt&amp;lang=en')">
+					
+						
+						
+							xslt	
+						
+					
+					<span class="ibm-access">(23)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f80-19">
+					
+					<a title="xslt_(xsl_transformations) 27" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xslt_%2528xsl_transformations%2529&amp;lang=en')">
+					
+						
+							xslt_(xsl_tran...	
+						
+						
+					
+					<span class="ibm-access">(27)</span>					
+					</a>&nbsp;
+				</li>
+					
+			</ul><p>End of Popular tags</p><h2>My tags</h2><div id="dw-tag-access-my" class="ibm-access"><center>To access My Tags, please <a href="http://www.ibm.com/developerworks/dwwi/DWAuthRouter?m=auth&amp;lang=en&amp;d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html">sign in</a><p>Read Popular tags</p></center><br></div><p>End of My tags</p></div>
+<div id="dw-tag-cloud">
+	<div id="dogearTagCloud">
+		<div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="content-slider"><a style="left: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a></div>
+		
+			
+						
+						
+						
+						
+						
+									
+			
+				<div id="ui-slider-scale"><p><span class="content-slider-more">More</span><span class="content-slider-less">Less</span></p></div>
+			
+		
+	    <div id="cloud-container">
+			<ul>
+					
+						
+							
+							
+							
+							
+								
+							
+							
+						
+				<li class="f1-75">
+					
+					<a title="ajax 119" class="lotusF4 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=ajax&amp;lang=en')">
+					
+						
+						
+							ajax	
+						
+					
+					<span class="ibm-access">(119)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f2-17">
+					
+					<a title="and 25" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=and&amp;lang=en')">
+					
+						
+						
+							and	
+						
+					
+					<span class="ibm-access">(25)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f3-32">
+					
+					<a title="android 38" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=android&amp;lang=en')">
+					
+						
+						
+							android	
+						
+					
+					<span class="ibm-access">(38)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f4-10">
+					
+					<a title="apache 21" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=apache&amp;lang=en')">
+					
+						
+						
+							apache	
+						
+					
+					<span class="ibm-access">(21)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f5-7">
+					
+					<a title="api 19" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=api&amp;lang=en')">
+					
+						
+						
+							api	
+						
+					
+					<span class="ibm-access">(19)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f6-7">
+					
+					<a title="application_and_information_integration 19" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=application_and_information_integration&amp;lang=en')">
+					
+						
+							application_an...	
+						
+						
+					
+					<span class="ibm-access">(19)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+							
+								
+							
+						
+				<li class="f7-85">
+					
+					<a title="application_development 157" class="lotusF5 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=application_development&amp;lang=en')">
+					
+						
+							application_...	
+						
+						
+					
+					<span class="ibm-access">(157)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+								
+							
+							
+						
+				<li class="f8-66">
+					
+					<a title="architecture 95" class="lotusF4 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=architecture&amp;lang=en')">
+					
+						
+						
+							architecture	
+						
+					
+					<span class="ibm-access">(95)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f9-12">
+					
+					<a title="atom 22" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=atom&amp;lang=en')">
+					
+						
+						
+							atom	
+						
+					
+					<span class="ibm-access">(22)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f10-39">
+					
+					<a title="cloud 46" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=cloud&amp;lang=en')">
+					
+						
+						
+							cloud	
+						
+					
+					<span class="ibm-access">(46)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f11-42">
+					
+					<a title="cloud_computing 50" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=cloud_computing&amp;lang=en')">
+					
+						
+							cloud_computi...	
+						
+						
+					
+					<span class="ibm-access">(50)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f12-9">
+					
+					<a title="components 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=components&amp;lang=en')">
+					
+						
+						
+							components	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f13-9">
+					
+					<a title="concurrency 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=concurrency&amp;lang=en')">
+					
+						
+						
+							concurrency	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f14-9">
+					
+					<a title="configuration_and_administration 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=configuration_and_administration&amp;lang=en')">
+					
+						
+							configuration_...	
+						
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f15-1">
+					
+					<a title="data 16" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=data&amp;lang=en')">
+					
+						
+						
+							data	
+						
+					
+					<span class="ibm-access">(16)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f16-44">
+					
+					<a title="databases_and_data_management 52" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=databases_and_data_management&amp;lang=en')">
+					
+						
+							databases_and...	
+						
+						
+					
+					<span class="ibm-access">(52)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f17-23">
+					
+					<a title="design 30" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=design&amp;lang=en')">
+					
+						
+						
+							design	
+						
+					
+					<span class="ibm-access">(30)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f18-9">
+					
+					<a title="development 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=development&amp;lang=en')">
+					
+						
+						
+							development	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f19-14">
+					
+					<a title="dojo 23" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=dojo&amp;lang=en')">
+					
+						
+						
+							dojo	
+						
+					
+					<span class="ibm-access">(23)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f20-25">
+					
+					<a title="dom_(document_object_model) 31" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=dom_%2528document_object_model%2529&amp;lang=en')">
+					
+						
+							dom_(document...	
+						
+						
+					
+					<span class="ibm-access">(31)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f21-55">
+					
+					<a title="eclipse 70" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=eclipse&amp;lang=en')">
+					
+						
+						
+							eclipse	
+						
+					
+					<span class="ibm-access">(70)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f22-3">
+					
+					<a title="editing 17" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=editing&amp;lang=en')">
+					
+						
+						
+							editing	
+						
+					
+					<span class="ibm-access">(17)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f23-15">
+					
+					<a title="frameworks 24" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=frameworks&amp;lang=en')">
+					
+						
+						
+							frameworks	
+						
+					
+					<span class="ibm-access">(24)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f24-37">
+					
+					<a title="general_programming 43" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=general_programming&amp;lang=en')">
+					
+						
+							general_progr...	
+						
+						
+					
+					<span class="ibm-access">(43)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f25-5">
+					
+					<a title="google 18" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=google&amp;lang=en')">
+					
+						
+						
+							google	
+						
+					
+					<span class="ibm-access">(18)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f26-18">
+					
+					<a title="green_it 26" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=green_it&amp;lang=en')">
+					
+						
+						
+							green_it	
+						
+					
+					<span class="ibm-access">(26)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f27-7">
+					
+					<a title="groovy 19" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=groovy&amp;lang=en')">
+					
+						
+						
+							groovy	
+						
+					
+					<span class="ibm-access">(19)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f28-12">
+					
+					<a title="gwt 22" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=gwt&amp;lang=en')">
+					
+						
+						
+							gwt	
+						
+					
+					<span class="ibm-access">(22)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f29-40">
+					
+					<a title="html 47" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=html&amp;lang=en')">
+					
+						
+						
+							html	
+						
+					
+					<span class="ibm-access">(47)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f30-5">
+					
+					<a title="html5 18" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=html5&amp;lang=en')">
+					
+						
+						
+							html5	
+						
+					
+					<span class="ibm-access">(18)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f31-3">
+					
+					<a title="ibm 17" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=ibm&amp;lang=en')">
+					
+						
+						
+							ibm	
+						
+					
+					<span class="ibm-access">(17)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+							
+								
+							
+						
+				<li class="f32-98">
+					
+					<a title="java 218" class="lotusF5 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=java&amp;lang=en')">
+					
+						
+						
+							java	
+						
+					
+					<span class="ibm-access">(218)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+								
+							
+							
+						
+				<li class="f33-61">
+					
+					<a title="java_technology 83" class="lotusF4 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=java_technology&amp;lang=en')">
+					
+						
+							java_technol...	
+						
+						
+					
+					<span class="ibm-access">(83)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f34-54">
+					
+					<a title="javascript 69" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=javascript&amp;lang=en')">
+					
+						
+						
+							javascript	
+						
+					
+					<span class="ibm-access">(69)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f35-15">
+					
+					<a title="jquery 24" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=jquery&amp;lang=en')">
+					
+						
+						
+							jquery	
+						
+					
+					<span class="ibm-access">(24)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f36-15">
+					
+					<a title="jsf 24" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=jsf&amp;lang=en')">
+					
+						
+						
+							jsf	
+						
+					
+					<span class="ibm-access">(24)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f37-12">
+					
+					<a title="json 22" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=json&amp;lang=en')">
+					
+						
+						
+							json	
+						
+					
+					<span class="ibm-access">(22)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f38-9">
+					
+					<a title="json_(javascript_object_notation) 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=json_%2528javascript_object_notation%2529&amp;lang=en')">
+					
+						
+							json_(javascri...	
+						
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f39-3">
+					
+					<a title="kernel 17" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=kernel&amp;lang=en')">
+					
+						
+						
+							kernel	
+						
+					
+					<span class="ibm-access">(17)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+							
+								
+							
+						
+				<li class="f40-87">
+					
+					<a title="linux 166" class="lotusF5 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=linux&amp;lang=en')">
+					
+						
+						
+							linux	
+						
+					
+					<span class="ibm-access">(166)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f41-14">
+					
+					<a title="mashups 23" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=mashups&amp;lang=en')">
+					
+						
+						
+							mashups	
+						
+					
+					<span class="ibm-access">(23)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f42-19">
+					
+					<a title="messaging 27" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=messaging&amp;lang=en')">
+					
+						
+						
+							messaging	
+						
+					
+					<span class="ibm-access">(27)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f43-3">
+					
+					<a title="multimedia 17" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=multimedia&amp;lang=en')">
+					
+						
+						
+							multimedia	
+						
+					
+					<span class="ibm-access">(17)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f44-1">
+					
+					<a title="namespaces 16" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=namespaces&amp;lang=en')">
+					
+						
+						
+							namespaces	
+						
+					
+					<span class="ibm-access">(16)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+								
+							
+							
+						
+				<li class="f45-69">
+					
+					<a title="open_source 101" class="lotusF4 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=open_source&amp;lang=en')">
+					
+						
+						
+							open_source	
+						
+					
+					<span class="ibm-access">(101)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f46-12">
+					
+					<a title="parsing 22" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=parsing&amp;lang=en')">
+					
+						
+						
+							parsing	
+						
+					
+					<span class="ibm-access">(22)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f47-1">
+					
+					<a title="part 16" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=part&amp;lang=en')">
+					
+						
+						
+							part	
+						
+					
+					<span class="ibm-access">(16)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f48-15">
+					
+					<a title="patterns 24" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=patterns&amp;lang=en')">
+					
+						
+						
+							patterns	
+						
+					
+					<span class="ibm-access">(24)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f49-38">
+					
+					<a title="performance 45" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=performance&amp;lang=en')">
+					
+						
+						
+							performance	
+						
+					
+					<span class="ibm-access">(45)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f50-3">
+					
+					<a title="perl 17" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=perl&amp;lang=en')">
+					
+						
+						
+							perl	
+						
+					
+					<span class="ibm-access">(17)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f51-55">
+					
+					<a title="php 71" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=php&amp;lang=en')">
+					
+						
+						
+							php	
+						
+					
+					<span class="ibm-access">(71)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f52-38">
+					
+					<a title="php_(hypertext_preprocessor) 45" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=php_%2528hypertext_preprocessor%2529&amp;lang=en')">
+					
+						
+							php_(hypertex...	
+						
+						
+					
+					<span class="ibm-access">(45)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f53-10">
+					
+					<a title="programming 21" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=programming&amp;lang=en')">
+					
+						
+						
+							programming	
+						
+					
+					<span class="ibm-access">(21)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f54-32">
+					
+					<a title="python 38" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=python&amp;lang=en')">
+					
+						
+						
+							python	
+						
+					
+					<span class="ibm-access">(38)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f55-9">
+					
+					<a title="read 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=read&amp;lang=en')">
+					
+						
+						
+							read	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f56-33">
+					
+					<a title="rest 39" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=rest&amp;lang=en')">
+					
+						
+						
+							rest	
+						
+					
+					<span class="ibm-access">(39)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f57-5">
+					
+					<a title="rss_(really_simple_syndication) 18" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=rss_%2528really_simple_syndication%2529&amp;lang=en')">
+					
+						
+							rss_(really_si...	
+						
+						
+					
+					<span class="ibm-access">(18)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f58-32">
+					
+					<a title="schemas 38" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=schemas&amp;lang=en')">
+					
+						
+						
+							schemas	
+						
+					
+					<span class="ibm-access">(38)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f59-31">
+					
+					<a title="security 37" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=security&amp;lang=en')">
+					
+						
+						
+							security	
+						
+					
+					<span class="ibm-access">(37)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f60-30">
+					
+					<a title="services 36" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=services&amp;lang=en')">
+					
+						
+						
+							services	
+						
+					
+					<span class="ibm-access">(36)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f61-53">
+					
+					<a title="soa 67" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=soa&amp;lang=en')">
+					
+						
+						
+							soa	
+						
+					
+					<span class="ibm-access">(67)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f62-17">
+					
+					<a title="soa_(service-oriented_architecture) 25" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=soa_%2528service-oriented_architecture%2529&amp;lang=en')">
+					
+						
+							soa_(service-o...	
+						
+						
+					
+					<span class="ibm-access">(25)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f63-1">
+					
+					<a title="soap 16" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=soap&amp;lang=en')">
+					
+						
+						
+							soap	
+						
+					
+					<span class="ibm-access">(16)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f64-43">
+					
+					<a title="soap_(simple_object_access_protocol) 51" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=soap_%2528simple_object_access_protocol%2529&amp;lang=en')">
+					
+						
+							soap_(simple_...	
+						
+						
+					
+					<span class="ibm-access">(51)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f65-9">
+					
+					<a title="spring 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=spring&amp;lang=en')">
+					
+						
+						
+							spring	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f66-30">
+					
+					<a title="standards 36" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=standards&amp;lang=en')">
+					
+						
+						
+							standards	
+						
+					
+					<span class="ibm-access">(36)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f67-31">
+					
+					<a title="tips 37" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=tips&amp;lang=en')">
+					
+						
+						
+							tips	
+						
+					
+					<span class="ibm-access">(37)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f68-5">
+					
+					<a title="to 18" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=to&amp;lang=en')">
+					
+						
+						
+							to	
+						
+					
+					<span class="ibm-access">(18)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f69-57">
+					
+					<a title="web 74" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=web&amp;lang=en')">
+					
+						
+						
+							web	
+						
+					
+					<span class="ibm-access">(74)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f70-42">
+					
+					<a title="web_2.0 49" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=web_2.0&amp;lang=en')">
+					
+						
+						
+							web_2.0	
+						
+					
+					<span class="ibm-access">(49)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+								
+							
+							
+							
+						
+				<li class="f71-42">
+					
+					<a title="web_development 49" class="lotusF3 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=web_development&amp;lang=en')">
+					
+						
+							web_developme...	
+						
+						
+					
+					<span class="ibm-access">(49)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+								
+							
+							
+						
+				<li class="f72-72">
+					
+					<a title="web_services 111" class="lotusF4 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=web_services&amp;lang=en')">
+					
+						
+						
+							web_services	
+						
+					
+					<span class="ibm-access">(111)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f73-14">
+					
+					<a title="websphere 23" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=websphere&amp;lang=en')">
+					
+						
+						
+							websphere	
+						
+					
+					<span class="ibm-access">(23)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f74-9">
+					
+					<a title="wireless 20" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=wireless&amp;lang=en')">
+					
+						
+						
+							wireless	
+						
+					
+					<span class="ibm-access">(20)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f75-14">
+					
+					<a title="xhtml_(extensible_html) 23" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xhtml_%2528extensible_html%2529&amp;lang=en')">
+					
+						
+							xhtml_(extensi...	
+						
+						
+					
+					<span class="ibm-access">(23)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+							
+							
+							
+								
+							
+						
+				<li class="f76-100">
+					
+					<a title="xml 234" class="lotusF5 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xml&amp;lang=en')">
+					
+						
+						
+							xml	
+						
+					
+					<span class="ibm-access">(234)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+							
+								
+							
+							
+							
+							
+						
+				<li class="f77-21">
+					
+					<a title="xpath_(xml_path_language) 28" class="lotusF2 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xpath_%2528xml_path_language%2529&amp;lang=en')">
+					
+						
+							xpath_(xml_pa...	
+						
+						
+					
+					<span class="ibm-access">(28)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f78-5">
+					
+					<a title="xquery_(xml_query_language) 18" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xquery_%2528xml_query_language%2529&amp;lang=en')">
+					
+						
+							xquery_(xml_qu...	
+						
+						
+					
+					<span class="ibm-access">(18)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f79-14">
+					
+					<a title="xslt 23" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xslt&amp;lang=en')">
+					
+						
+						
+							xslt	
+						
+					
+					<span class="ibm-access">(23)</span>					
+					</a>&nbsp;
+				</li>
+					
+						
+							
+								
+							
+							
+							
+							
+							
+						
+				<li class="f80-19">
+					
+					<a title="xslt_(xsl_transformations) 27" class="lotusF1 my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=xslt_%2528xsl_transformations%2529&amp;lang=en')">
+					
+						
+							xslt_(xsl_tran...	
+						
+						
+					
+					<span class="ibm-access">(27)</span>					
+					</a>&nbsp;
+				</li>
+					
+			</ul>
+		</div>
+		
+			
+						
+						
+						
+						
+						
+			
+			
+				<div class="ibm-rule"><hr></div><p>View as <strong>cloud</strong>&nbsp;| <a id="alist" class="lotusAction" href="javascript:;">list</a></p>
+			
+		
+		</div> 
+
+		
+			
+			<div class="lotusChunk dw-hidetag" id="dogearTagList">
+			<div id="list-container">
+				<ul class="lotusList lotusEditable lotusTags lotusMeta">
+				
+					
+						
+			
+
+			
+				<li>				
+					<a title="ajax 119" class="lotusLeft my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=ajax&amp;lang=en')">
+						
+							
+							
+								ajax	
+							
+						
+					</a>
+					119
+				</li>
+				
+			
+					
+						
+			
+
+			
+				<li>				
+					<a title="and 25" class="lotusLeft my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=and&amp;lang=en')">
+						
+							
+							
+								and	
+							
+						
+					</a>
+					25
+				</li>
+				
+			
+					
+						
+			
+
+			
+				<li>				
+					<a title="android 38" class="lotusLeft my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=android&amp;lang=en')">
+						
+							
+							
+								android	
+							
+						
+					</a>
+					38
+				</li>
+				
+			
+					
+						
+			
+
+			
+				<li>				
+					<a title="apache 21" class="lotusLeft my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=apache&amp;lang=en')">
+						
+							
+							
+								apache	
+							
+						
+					</a>
+					21
+				</li>
+				
+			
+					
+						
+			
+
+			
+				<li>				
+					<a title="api 19" class="lotusLeft my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=api&amp;lang=en')">
+						
+							
+							
+								api	
+							
+						
+					</a>
+					19
+				</li>
+				
+			
+					
+						
+			
+
+			
+				<li>				
+					<a title="application_and_information_integration 19" class="lotusLeft my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=application_and_information_integration&amp;lang=en')">
+						
+							
+								application_a...	
+							
+							
+						
+					</a>
+					19
+				</li>
+				
+			
+					
+						
+			
+
+			
+				<li>				
+					<a title="application_development 157" class="lotusLeft my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=application_development&amp;lang=en')">
+						
+							
+								application_d...	
+							
+							
+						
+					</a>
+					157
+				</li>
+				
+			
+					
+						
+			
+
+			
+				<li>				
+					<a title="architecture 95" class="lotusLeft my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=architecture&amp;lang=en')">
+						
+							
+							
+								architecture	
+							
+						
+					</a>
+					95
+				</li>
+				
+			
+					
+						
+			
+
+			
+				<li>				
+					<a title="atom 22" class="lotusLeft my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=atom&amp;lang=en')">
+						
+							
+							
+								atom	
+							
+						
+					</a>
+					22
+				</li>
+				
+			
+					
+						
+			
+
+			
+				<li>				
+					<a title="cloud 46" class="lotusLeft my" href="javascript:launchTagWindow('/developerworks/mydeveloperworks/bookmarks/html?tag=cloud&amp;lang=en')">
+						
+							
+							
+								cloud	
+							
+						
+					</a>
+					46
+				</li>
+				
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+					
+			
+				
+			</ul>
+			</div>
+			
+				
+							
+							
+							
+							
+							
+								
+				
+					<div class="ibm-rule"><hr></div><p>View as <a id="acloud" class="lotusAction" href="javascript:;">cloud</a>&nbsp;| <strong>list</strong></p>
+				
+			
+			</div></div>  
+</div>   
+</div>
+</div>
+<!-- Tagging_End -->
+<!-- Dig_Deeper -->
+<div class="ibm-container"><h2>Dig deeper into XML on developerWorks</h2><div class="ibm-container-body"><ul class="ibm-link-list"><li class="ibm-first"><a href="http://www.ibm.com/developerworks/xml/" class="ibm-forward-link">Overview</a></li><li><a href="http://www.ibm.com/developerworks/xml/newto/" class="ibm-forward-link">New to XML</a></li><li><a href="http://www.ibm.com/developerworks/views/xml/downloads.jsp" class="ibm-forward-link">Downloads and products</a></li><li><a href="http://www.ibm.com/developerworks/views/xml/projects.jsp" class="ibm-forward-link">Open source projects</a></li><li><a href="http://www.ibm.com/developerworks/xml/standards/" class="ibm-forward-link">Standards</a></li><li><a href="http://www.ibm.com/developerworks/views/xml/library.jsp" class="ibm-forward-link">Technical library (articles, tutorials, and more)</a></li><li><a href="http://www.ibm.com/developerworks/xml/training/" class="ibm-forward-link">Training</a></li><li><a href="http://www.ibm.com/developerworks/forums/dw_xforums.jsp" class="ibm-forward-link">Forums</a></li><li><a href="http://www.ibm.com/developerworks/views/xml/events.jsp" class="ibm-forward-link">Events</a></li><li><a href="http://www.ibm.com/developerworks/newsletter/" class="ibm-forward-link">Newsletter</a></li></ul></div></div>
+<!-- High_Visibility_Offer -->
+<!--XSLT stylesheet used to transform this content: s-highvisibilityoffer.xsl--><div class="ibm-container"><h2>The ultimate agile development solution</h2><div class="ibm-container-body"><img alt="Rational Team Concert Exp-C" src="jquery-dev_files/hivis-w-etcec.jpg" border="0" width="188" height="70"><p class="ibm-ind-link"><a href="http://www.ibm.com/developerworks/downloads/r/rtcexpressc/learn.html?ca=dti-ratcexpc" class="ibm-forward-link">Free for up to 10 developers - Rational Team Concert Express-C</a></p></div></div>
+<!-- Special_Offers -->
+<div class="ibm-container"><h2>Special offers</h2><div class="ibm-container-body"><p class="dw-special-offers"><a href="http://www.ibm.com/developerworks/db2/community/usergroups.html?ca=dti-imusergroups"><img src="jquery-dev_files/tile_v16_DB2usergrp.gif" alt="Get connected to global Information Mgmt communities" border="0" width="158" height="50"></a></p><p class="dw-special-offers"><a href="https://www.ibm.com/developerworks/mydeveloperworks/groups/service/html/communityview?communityUuid=0a7c97bb-6cf9-4ddb-a918-80994e7b444d&amp;ca=dti-imcognoscommunity"><img src="jquery-dev_files/tile_v16_cognos3.gif" alt="Join C^3 - the Cognos developer community" border="0" width="158" height="50"></a></p><p class="dw-special-offers"><a href="http://www.ibm.com/developerworks/downloads/r/rtc/tryonline.html?ca=dti-rattcsandbox"><img src="jquery-dev_files/tile_v16_rtcsandbox.gif" alt="Online sandbox: Play with Rational Team Concert" border="0" width="158" height="50"></a></p><div class="ibm-rule"><hr></div><p class="ibm-ind-link"><a class="ibm-forward-link" href="http://www.ibm.com/developerworks/downloads/?ca=dti-tilemoreoffers">Trial software offers</a></p></div></div>
+<!-- RIGHT_COLUMN_CONTENT_END -->
+
+</div>
+<!-- RIGHT_COLUMN_END -->
+
+<!-- CONTENT_BODY_END -->
+</div>
+
+</div>
+<!-- CONTENT_END -->
+
+ <!-- END_IBM-PCON -->
+</div>
+
+<!-- FOOTER_BEGIN -->
+<div id="ibm-page-tools">
+<!-- IBM page tools container -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/">Terms of use</a></li>
+<li><a href="http://www.ibm.com/ibm/syndication/us/en/?cm_re=footer-_-ibmfeeds-_-top_level">IBM Feeds</a></li><li><a href="http://www.ibm.com/employment/?cm_re=footer-_-jobs-_-top_level">Jobs</a></li></ul>
+<div id="ibm-social-tools"><ul><li><a rel="print" href="#" title="Print this page" class="ibm-share-print"></a></li><li><a rel="email" href="#" title="E-mail this page" class="ibm-share-email"></a></li><li><a rel="digg" href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html&amp;title=Simplify%20Ajax%20development%20with%20jQuery" title="Digg" class="ibm-share-digg"></a></li><li><a rel="facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html&amp;t=Simplify%20Ajax%20development%20with%20jQuery" title="Facebook" class="ibm-share-facebook"></a></li><li><a rel="twitter" href="http://twitter.com/home?status=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html%20-%20Simplify%20Ajax%20development%20with%20jQuery" title="Twitter" class="ibm-share-twitter"></a></li><li><a rel="delicious" href="http://delicious.com/post?url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html&amp;title=Simplify%20Ajax%20development%20with%20jQuery" title="Delicious" class="ibm-share-delicious"></a></li><li><a rel="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Flibrary%2Fx-ajaxjquery.html&amp;title=Simplify%20Ajax%20development%20with%20jQuery" title="Linked In" class="ibm-share-linkedin"></a></li></ul></div></div>
+<!-- FOOTER_END -->
+
+ <!-- END_IBM-TOP -->
+<div id="ibm-overlay-top"></div></div>
+ 
+ <!-- SCRIPTS_INCLUDE_BEGIN -->
+<!-- JQuery start -->
+<script type="text/javascript" language="JavaScript" src="jquery-dev_files/jquery_002.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery-dev_files/jquery.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery-dev_files/jquery_003.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery-dev_files/ui.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery-dev_files/ui_002.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery-dev_files/dwjquerytags.js"></script>
+<script type="text/javascript" language="JavaScript">
+	jQuery.noConflict();     
+	// Put all your code in your document ready area
+	jQuery(document).ready(function(jQuery) {
+	// Do jQuery stuff using jQuery 
+	jQuery('a.dwauthor').cluetip({
+		local: true,
+		showTitle: false,
+		positionBy: 'bottomTop',
+		sticky: true,	
+		mouseOutClose: true,
+		closeText: '<img src="//dw1.s81c.com/developerworks/js/jquery/cluetip98/i/x.gif" alt="Close" />',
+		arrows: false,
+		dropShadow: true,
+		cluetipClass: 'dwbasic'
+		});
+
+		//tagging
+		login="false";
+		userid="";
+		whichTags = "init";
+		pCont = "";
+		mCont = "";
+		signInMCont = "";
+		accessCont = "";
+		pValue = 0;
+		mValue = 0;
+
+		rBHash = null;
+		rBHash = new Object();
+		rBHash['viperLang'] = 'en';
+		rBHash['urlLang'] = 'en';
+		rBHash['tagThisWinTitle'] = 'Tagit';
+		rBHash['pTags1'] = 'Popular tags';
+		rBHash['pTags2'] = 'End of Popular tags';
+		rBHash['mTags1'] = 'My tags';
+		rBHash['mTags2'] = 'End of My tags';
+		rBHash['alt1'] = 'Loading Content';
+		rBHash['noATags'] = 'No active tags';
+		rBHash['signIn1'] = 'Please ';
+		rBHash['signIn2'] = 'sign in';
+		rBHash['signIn3'] = ' to access';
+		rBHash['signIn4'] = 'My Tags';
+		rBHash['signIn5'] = 'To access My Tags, please ';
+		rBHash['signIn6'] = 'sign in';
+		rBHash['signIn7'] = 'Read Popular tags';
+
+		zoneHash = new Object();
+		zoneHash['aix'] = 'AIX and UNIX zone';
+		zoneHash['data'] = 'Information Management zone';
+		zoneHash['lotus'] = 'Lotus zone';
+		zoneHash['rational'] = 'Rational zone';
+		zoneHash['tivoli'] = 'Tivoli zone';
+		zoneHash['websphere'] = 'WebSphere zone';
+		zoneHash['architecture'] = 'Technical library';
+		zoneHash['autonomic'] = 'Technical library';
+		zoneHash['java'] = 'Technical library';
+		zoneHash['cloud'] = 'Technical library';
+		zoneHash['industry'] = 'Technical library';
+		zoneHash['library'] = 'Technical library';
+		zoneHash['linux'] = 'Technical library';
+		zoneHash['opensource'] = 'Technical library';
+		zoneHash['power'] = 'Technical library';
+		zoneHash['webservices'] = 'Technical library';
+		zoneHash['web'] = 'Technical library';
+		zoneHash['xml'] = 'Technical library';
+		zoneHash['wireless'] = 'Technical library';
+		jQuery.checkRB();
+		jQuery.getPopularTags("/developerworks/dwtags/dwjquerytabtags?lang=" + rBHash['viperLang'] + "&base=" + jQuery.getNormalizedZoneUrl(location.href));
+		jQuery.getUserTags();
+		if(jQuery.isTutorial(location.href) == "true") {
+			jQuery.getTagsForContent("/developerworks/tagging/UseCaseServlet?lang=" + rBHash['viperLang'] + "&format=maverick&cType=tutorials&use_case=geturltags&action=gettags&url=" + jQuery.normalizeUrl(location.href));
+		}
+		else {
+			jQuery.getTagsForContent("/developerworks/tagging/UseCaseServlet?lang=" + rBHash['viperLang'] + "&format=maverick&cType=articles&use_case=geturltags&action=gettags&url=" + jQuery.normalizeUrl(location.href));
+
+		}
+	});
+ </script>
+ <!-- JQuery end -->
+ <!-- Overlay js -->
+<script language="JavaScript" src="jquery-dev_files/overlay.js" type="text/javascript"></script>
+<!-- My dW Interest article -->
+<script language="JavaScript" src="jquery-dev_files/showinterest.js" type="text/javascript">//</script>
+<script language="JavaScript" type="text/javascript">
+        // <![CDATA[
+			var contentId = '';
+			var contentAreas = '';
+			var caArr = [];
+			contentId = '205662';
+			contentAreas = 'xml,web';
+			if(contentAreas != ''){caArr = contentAreas.split(',');}
+			var loginLink = 'https://www.ibm.com/developerworks/dwwi/DWAuthRouter?m=loginpage&d=' + encodeURIComponent(window.location);jQuery('interestShow').showInterest(contentId,'dw-article',{'int_tops':[725,51,102,107,889,2,52,53],'int_prods':[], 'int_prod_fam':[],'int_cont_area':caArr},
+'<div id="dw-interest-anon"><a id="intAnonBtn" class="ibm-external-link" href="">Update My dW interests</a> (<a class="dw-interest" href="' + loginLink + '">Log in</a> | <a class="dw-interest" href="#overlay" onclick="ibmCommon.Overlays.show(\'dwmyinterestadd\', this);return false;">What\'s this?</a>) <a class="ibm-access" href="#dwmyinterestaddhelp">Skip to help for Update My dW interests</a></div>',
+'<div id="dw-interest-add"><a id="intSelectBtn" class="ibm-external-link" href="">Add to My dW interests</a> (<a class="dw-interest" href="#overlay" onclick="ibmCommon.Overlays.show(\'dwmyinterestadd\', this);return false;">What\'s this?</a>) <a class="ibm-access" href="#dwmyinterestaddhelp">Skip to help for Add to My dW interests</a></div>',
+'<div id="dw-interest-remove">Added to My dW interests (<a class="dw-interest" href="https://www.ibm.com/developerworks/mydeveloperworks/profiles/html/myProfileView.do?lang=en">Edit</a>)</div>'
+);
+// ]]>
+</script>
+<!-- BEGIN: Use this section to set page specific variables for the Unica Page Tag -->
+<script language="JavaScript">var NTPT_PGEXTRA="ibmSkillLevel=3&ibmAdoptPhase=-&ibmRole=-";</script>
+<!--END --><!-- SCRIPTS_INCLUDE_END -->
+
+<div id="ibm-metrics">
+<script src="jquery-dev_files/stats.js" type="text/javascript">//</script>
+</div>
+
+<div style="position: absolute; z-index: 95; display: none;" id="cluetip-waitimage"></div><div style="z-index: 96; display: none; position: absolute;" id="cluetip"><div style="z-index: 95; opacity: 0.1; top: 1px; left: 1px; position: absolute; background-color: rgb(0, 0, 0);"></div><div style="z-index: 94; opacity: 0.1; top: 2px; left: 2px; position: absolute; background-color: rgb(0, 0, 0);"></div><div style="z-index: 93; opacity: 0.1; top: 3px; left: 3px; position: absolute; background-color: rgb(0, 0, 0);"></div><div style="z-index: 92; opacity: 0.1; top: 4px; left: 4px; position: absolute; background-color: rgb(0, 0, 0);"></div><div style="z-index: 91; opacity: 0.1; top: 5px; left: 5px; position: absolute; background-color: rgb(0, 0, 0);"></div><div style="z-index: 90; opacity: 0.1; top: 6px; left: 6px; position: absolute; background-color: rgb(0, 0, 0);"></div><div style="position: relative; z-index: 97;" id="cluetip-outer"><h3 id="cluetip-title"></h3><div id="cluetip-inner"></div></div><div id="cluetip-extra"></div><div style="z-index: 97;" id="cluetip-arrows" class="cluetip-arrows"></div></div></body></html>

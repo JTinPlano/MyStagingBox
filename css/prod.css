@@ -1,0 +1,563 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+	font-family: "Trebuchet MS", sans-serif;
+	background-image: url(images/ui-bg_loop_25_000000_21x21.png);
+	font-size: 80%;
+	background-repeat: repeat;
+	color: #ddd;
+}
+
+header, donate, logo, sitesearch, googletop, googlebottom, footer, leftcolumn, rightcolumn, centercolumn, sitenav, content, tellafriend, contact, topad, rightad, sotdad, sotmad, likeshare
+{
+	display: block;
+	padding: 2px;
+/*	border: 1px solid #0000ff; */
+}
+
+#content
+{
+	display: inline;
+	width: 750px;
+/*	border: 1px solid #0000ff; */
+	float: left;
+}
+.dialog { display: none; }
+
+#logform
+{
+	display: inline;
+	width: 200px;
+/*	border: 1px solid #0000ff; */
+	float: left;
+}
+#regform
+{
+	display: inline;
+	width: 360px;
+/*	border: 1px solid #0000ff; */
+	float: right;
+}
+centercolumn
+{
+/*	margin: 0 0 0 2px; */
+	display: block;
+	width: 750px;
+/*	border: 1px solid #0000ff;  */
+	float: left;
+}
+#login, #activate
+{
+	margin: 0 50px 0 0;
+	display: inline;
+/*	border: 1px solid #0000ff; */
+	float: left;
+}
+#register
+{
+/*	margin: 0 0 0 2px; */
+	display: inline;
+	height: 400px;
+	width: 400px;
+/*	border: 1px solid #0000ff; */
+	float: right;
+}
+#OuterTab, #Level1-1, #Level1-2, #Level1-3, #Level1-4, #Level1-5, #Level1-6, #myprofile, #changepassword
+{
+	display: inline;
+	padding: 0px;
+	float: left;
+	width: 750px;
+/*	border: 1px solid #0000ff; */
+}
+
+leftcolumn
+{
+/*	margin: 0 0 0 2px; */
+	width: 180px;
+/*	border: 1px solid #0000ff; */
+	float: left;
+	visibility: visible;
+}
+.block
+{
+   background-color:#000;
+   opacity:0.5;
+   position:relative;
+   width:140;
+   height:auto;
+}
+.notice
+{
+	font-size: 125%;
+	color: #d00;
+}
+container
+{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+/*	height:auto; */
+	width: 1200px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+/*	border: 1px solid #0000ff; */
+}
+header
+{
+	display: inline-block;
+	margin: 0 0 0 0;
+	width: 1200px;
+	height: 134px;
+	left: auto;
+	top: auto;
+	text-align: center;
+/*	border: 1px solid #0000ff;  */
+}
+
+copyright
+{
+	position: relative;
+	text-align: center;
+	width: 728px;
+/*	border: 1px solid #0000ff; */
+	float: left;
+	color: #ddd;
+}
+
+corpnav
+{
+	color: #8f8fff;
+	float: left;
+	position: relative;
+	text-align: center;
+	width: 728px;
+/*	border: 1px solid #0000ff; */
+}
+
+rightcolumn
+{
+	display: block;
+	width: 245px;
+	margin: 0 0 0 2px;
+	position: relative;
+	float: left;
+/*	border: 1px solid #0000ff; */
+}
+
+logo
+{
+	position: relative;
+	height: auto;
+	width: 380px;
+	top: auto;
+	left: auto;
+	float: left;
+/*	border: 1px solid #0000ff; */
+}
+
+topad
+{
+	position: relative;
+	height: auto;
+	width: 500px;
+	top: auto;
+	left: auto;
+	float: left;
+/*	border: 1px solid #0000ff; */
+}
+
+rightad
+{
+	display: inline-block;
+	position: relative;
+	height: auto;
+	width: 500px;
+	top: auto;
+	left: auto;
+	float: left;
+/*	border: 1px solid #0000ff; */
+}
+
+sotdad
+{
+	position: relative;
+	height: auto;
+	width: 500px;
+	top: auto;
+	left: auto;
+	float: left;
+/*	border: 1px solid #0000ff; */
+}
+
+sotmad
+{
+	position: relative;
+	height: auto;
+	width: 500px;
+	top: auto;
+	left: auto;
+	float: left;
+/*	border: 1px solid #0000ff; */
+}
+
+topbanner
+{
+	position: relative;
+	height: 100px;
+	width: 500px;
+	top: auto;
+	left: auto;
+	float: left;
+	border: 1px solid #0000ff;
+	display: block;
+}
+
+dashboard
+{
+	display: inline-block;
+	position: relative;
+	height: auto;
+	width: auto;
+	float: right;
+/*	border: 1px solid #0000ff; */
+	right: 0px;
+	z-index: 103;
+}
+
+push
+{
+	display: inline;
+	position: relative;
+	float: right;
+	height: 33px;
+	width: 100px;
+	top: 10px;
+	text-align: left;
+	right: 350px;
+	z-index: -9999;
+/*	border: 1px solid #0000ff; */
+}
+
+donate
+{
+	position: absolute;
+	top: 40px;
+	display: inline-block;
+	height: auto;
+	width: 160px;
+/*	border: 1px solid #0000ff; */
+	right: 0px;
+}
+
+likeshare
+{
+	position: absolute;
+	top: 113px;
+	display: inline-block;
+	height: auto;
+	width: auto;
+/*	border: 1px solid #0000ff; */
+	right: 0px;
+}
+
+contacttell
+{
+	display: inline;
+	margin: 0 0 0 0;
+	position: relative;
+	height: auto;
+	width: 250px;
+	float: left;
+/*	border: 1px solid #0000ff; */
+	z-index: 103;
+}
+
+footer h4
+{
+	position: relative;
+	color: #ddd;
+/*	border: 1px solid #0000ff; */
+}
+footer
+{
+	margin: 0 261px 0 0;
+	position: relative;
+	float: right;
+	width: 728px;
+	height: auto;
+	left: 144;
+	top: auto;
+	text-align: center;
+/*	border: 1px solid #0000ff; */
+}
+
+googletop
+{
+	position: relative;
+	margin: 0 0 0 0;
+	text-align: center;
+	width: 750px;
+/*	border: 1px solid #0000ff; */
+	float: left;
+}
+
+googlebottom
+{
+	position: relative;
+	margin: 0 220px 0 0;
+	text-align: center;
+	width: 750px;
+/*	border: 1px solid #0000ff; */
+	float: left;
+}
+googleright
+{
+	text-align: center;
+	width: 245px;
+/*	border: 1px solid #0000ff;  */
+	float: left;
+	margin: 4px 0 4px 0;
+}
+
+googleleft
+{
+	text-align: center;
+	width: 140px;
+/*	border: 1px solid #0000ff;  */
+	float: left;
+	margin: 4px 0 4px 0;
+}
+
+sponsorad
+{
+	text-align: center;
+	width: 245px;
+	position: relative;
+	float: right;
+	margin: 2px 0 0 0;
+	height: 150px;
+	top: auto;
+	border: 1px solid #0000ff;
+}
+
+sitesearch
+{
+	float: right;
+	width: 250px;
+	top: 30px;
+	right: 0px;
+	text-align: right;
+	position: absolute;
+/*	border: 1px solid #0000ff; */
+}
+
+.defaultText
+{
+	width: 150px;
+}
+.defaultTextActive
+{
+	color: #a1a1a1;
+	font-style: italic;
+}
+
+.inputRequirement, #csz, #title
+{
+	font-size : 12px;
+	color : #ff0000;
+}
+
+.pageHeading
+{
+	font-size : 20px;
+	font-weight : bold;
+	color : #dddddd;
+}
+
+.main
+{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height : 1.5;
+	color : #dddddd;
+	vertical-align: top;
+}
+.mainbold {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	line-height : 1.5;
+	color : #dddddd;
+	vertical-align: top;
+}
+
+.intro {
+	font-size: 20px;
+	text-align: left;
+	margin:3px 0 3px 0;
+}
+
+.introheading {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	line-height : 1.2;
+	color : #dddddd;
+	text-align: center;
+	margin:3px 0 3px 0;
+}
+
+.introtext {
+	font-size: 16px;
+	text-align: left;
+	margin:3px 0 3px 0;
+}
+
+.labelbold {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	line-height : 1.0;
+	color : #dddddd;
+}
+
+#date
+{
+	text-align: center;
+	width: 680px;
+	display: block;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.hrefdate, .hrefstate
+{
+	margin: 8px 8px 8px 0;
+	text-align: right;
+	display: inline-block;
+	width: 678px;
+/*	border: 1px solid #0000ff;  */
+}
+
+.panel{
+    height: 450px;
+    overflow: auto;
+}
+
+// class defs for intro events
+about{
+	background:#333333 url(/tools/img/logo-medium.png) no-repeat scroll 215px 40px;
+	color:#eee;
+	width:728px;
+	height:auto;
+	position:relative;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	margin: 4px 4px 4px 4px;
+	font-size: 20px;
+}
+
+intro{
+	background:#333333 url(/tools/img/logo-medium.png) no-repeat scroll 215px 40px;
+	color:#eee;
+	width:728px;
+	height:auto;
+	position:relative;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+.jTip{
+/*	margin: 4px;  */
+	width: 12px;
+	height: 12px;
+	cursor: pointer;
+	list-style: none outside none;
+	padding: 4px;
+}
+#addevent, #schedule, #demoaddevent, #demoschedule{
+	cursor: pointer;
+	margin: 2px;
+	padding: 1px;
+	font-size: 75%;
+}
+
+/* nested fieldset */
+#events fieldset {
+	border:0;
+	margin:0;
+	padding:0;
+	width:50%;
+	position:relative;
+	float: left;
+}
+
+/* for google search form */
+#gsearch {
+	float:right;
+}
+
+#gsearch input {
+	border:0;
+	background:transparent url(images/main.png) no-repeat scroll -9px -237px;
+	width:145px;
+	padding:4px 10px;
+	font-size:11px;
+	outline: none;
+	position:relative;
+	top:1px;
+}
+
+#gsearch input:focus {
+	background-position:-9px -207px;
+}
+
+#gsearch button {
+	border:0;
+	background: transparent url(images/main.png) no-repeat scroll -8px -263px;
+	text-indent:-999em;
+	width:78px;
+	height:23px;
+	outline:none !important;
+}
+
+#gsearch button:hover {
+	background-position:-8px -293px;
+}
+
+#gsearch button:focus {
+	background-position:-8px -323px;
+}
+
+defaultText { width: 75px; }
+defaultTextActive { color: #a1a1a1; font-style: italic; }
+
+#login input.text { margin-bottom:12px; width:95%; padding: .4em; }
+#login fieldset { padding:0; border:0; margin-top:12px; }
+#register input.text { margin-bottom:12px; width:95%; padding: .4em; }
+#register fieldset { padding:0; border:0; margin-top:12px; }
+#changepassword input.text { margin-bottom:12px; width:95%; padding: .4em; }
+#changepassword fieldset { padding:0; border:0; margin-top:12px; }
+#profile input.text { margin-bottom:12px; width:95%; padding: .4em; }
+#profile fieldset { padding:0; border:0; margin-top:12px; }
+#actacct input.text { margin-bottom:12px; width:95%; padding: .4em; }
+#actacct fieldset { padding:0; border:0; margin-top:12px; }
+#contactus input.text { margin-bottom:12px; width:95%; padding: .4em; }
+#contactus input.textarea { margin-bottom:12px; width:95%; padding: .4em; }
+#contactus fieldset { padding:0; border:0; margin-top:6px; }
+#tellafriend input.text { margin-bottom:12px; width:95%; padding: .4em; }
+#tellafriend input.textarea { margin-bottom:12px; width:95%; padding: .4em; }
+#tellafriend fieldset { padding:0; border:0; margin-top:6px; }
+h1 { font-size: 1.2em; margin: .6em 0; }
+.ui-dialog .ui-state-error { padding: .3em; }
+.validateTip { border: 1px solid transparent; padding: 0.3em; }
+.activateTip { border: 1px solid transparent; padding: 0.3em; }
+
+.btt
+{
+	float: right;
+	display: block;
+
+}
