@@ -12,66 +12,74 @@
 	$return['msg'] = '';
 	foreach ($_POST as $k => $v)
 	{
-//		echo "line 63 $k = $v<br />\n";
+//		echo "line 15 $k = $v<br />\n";
+		$$k = $v;
 	}
-	$subject = "MyStagingBox.com Registration Activation";
-	$from = $email;
-	$message = "
-	<!DOCTYPE HTML>
-	<html dir='LTR' lang='en-us'>
-	<head>
-	<title>MyStagingBox.com Registration</title>
-		<link type='text/css' href='$_SERVER[HTTP_HOST]/css/jquery-ui-1.8.14.dark-hive.css' rel='stylesheet' />
-		<link type='text/css' href='$_SERVER[HTTP_HOST]/css/prod.css' rel='stylesheet' />
-		<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.2.min.js'></script>
-		<script type='text/javascript' src='$_SERVER[HTTP_HOST]/js/jquery-ui-1.8.14.dark-hive.min.js'></script>
-		<link type='text/css' href='$_SERVER[HTTP_HOST]/css/tooltip.css' rel='stylesheet' />
-		<script type='text/javascript' src='$_SERVER[HTTP_HOST]/js/hrsb.js'></script>
-		<script type='text/javascript' src='$_SERVER[HTTP_HOST]/js/jquery.cookies.2.2.0.js'></script>
-		<script type='text/javascript' src='$_SERVER[HTTP_HOST]/js/jquery.blockUI.js'></script>
-	<script type='text/javascript' src='$_SERVER[HTTP_HOST]/js/charCount.js'></script>
-	<script type='text/javascript' src='$_SERVER[HTTP_HOST]/js/jTip.js'></script>
+//	exit();
+$query="select contacttype from contacttype where contacttypeid='$subject'";
+//echo $query."<br />";
+	$result = f(q($query));
+	$subject = $result['contacttype']." - MyStagingBox.com Contact Us Form Submission";
+//echo $subject;
+//exit();
+	$content = '
+<html dir="LTR" lang="en-us">
+<head>
+	<title>MyStagingBox.com Contact Us</title>
+	<link type="text/css" href="http://'.$_SERVER["SERVER_NAME"].'/css/jquery-ui-1.8.14.dark-hive.css" rel="stylesheet" />
+	<link type="text/css" href="http://'.$_SERVER["SERVER_NAME"].'/css/prod.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="http://'.$_SERVER["SERVER_NAME"].'/js/jquery-ui-1.8.14.dark-hive.min.js"></script>
+	<link type="text/css" href="http://'.$_SERVER["SERVER_NAME"].'/css/tooltip.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://'.$_SERVER["SERVER_NAME"].'/js/hrsb.js"></script>
+	<script type="text/javascript" src="http://'.$_SERVER["SERVER_NAME"].'/js/jquery.cookies.2.2.0.js"></script>
 	</head>
 	<body>
 	<header>
-	<logo><img alt='MyStagingBox.com' src='$_SERVER[HTTP_HOST]/images/hrsb-logo.gif' border='0'></logo>
+<img alt="MyStagingBox.com" src="http://'.$_SERVER["SERVER_NAME"].'/images/msb-logo7.gif" border="0">
 	</header>
 	<table>
 	<tr><td>
-	<div id='activate' title='Activate My Profile' style='display:inline;'>
-		<span class='validateTip' id='logtip'></span>
-		<form action='$_SERVER[HTTP_HOST]/profile/activate.php' method='post'>
-		<fieldset>
-			<input type='hidden' name='key' value='$key'>
-			<input type='hidden' name='action' value='activate'>
-			<input type='hidden' name='token' value='$token'>
-			<input id='actacct' type='submit' class='ui-button ui-widget ui-state-default ui-corner-all' value='Activate My Profile'>
-		</fieldset>
-		</form>
-	</div>
+		'.$subject.'<br /><br />'.$message.'<br /><br />
 	</td></tr>
-	<tr><td>Thank you again for becoming the newest subscriber to MyStagingBox.com, THE perfect staging area for ALL things hot rod.</td></tr>
 	</table>
 	</body>
-	</html>";
+	</html>';
 
 	// Always set content-type when sending HTML email
-	$headers = 'MIME-Version: 1.0\r\n';
-	$headers .= 'Content-type:text/html;charset=UTF-8\r\n';
-
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+$headers .= 'X-Mailer: php';
 	// More headers
-	$headers .= 'From: <noreply@mystagingbox.com>\r\n';
-	$headers .= 'Bcc: jt@mystagingbox.com\r\n';
+$to='jt@mystagingbox.com';
+//$headers .= 'Bcc: jt@mystagingbox.com' . "\r\n";
+$headers .= 'To: '.$to.'' . "\r\n";
+$headers .= 'From: '.$from.'' . "\r\n";
+$headers .= 'CC: '.$from.'' . "\r\n";
 
-	$result=mail($to, $subject, $message, $headers);
+//	$result=mail('jt@mystagingbox.com', $subject, $message, $headers);
 
 	//send the email with an email containing the activation link to the supplied email address
 	//display the success message
-
-			$return[error]='false';
-			$return[msg]='Please check your email for confirmation and an activation link.';
-			$return[id] = 'sitenotice';
-			echo json_encode($return);
+//echo "to ".$to."<br />";
+//echo "from ".$from."<br />";
+//echo "subject ".$subject."<br />";
+//echo "header: ".$headers."<br />";
+//echo "message ".$content."<br />";
+//exit();
+if (mail($to, $subject, $content, $headers))
+{
+	$return['error'] = false;
+	$return['msg'] = 'Your email has been sent, and a copy has been sent to you.  Click "Cancel" below to continue.';
+	$return[id] = 'thisform';
+}
+else
+{
+	$return['error'] = true;
+	$return['msg'] = 'Form processing halted for suspicious activity.';
+	$return[id] = 'sitenotice';
+}
+echo json_encode($return);
 	//echo $query;
 
 ?>
