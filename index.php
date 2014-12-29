@@ -80,9 +80,11 @@ $leftcolumn="";
 //echo isset($_COOKIE[loggedin]);
 //exit();
 if (($_COOKIE[_hrsb_msb]== NULL && $_COOKIE[loggedin]== NULL) ||
-(isset($_COOKIE[_hrsb_msb]) && $_COOKIE[loggedin]== "false"))
+(isset($_COOKIE[_hrsb_msb]) && $_COOKIE[loggedin]== "false") ||
+(isset($_COOKIE[_hrsb_msb]) && !isset($_COOKIE[loggedin]))
+)
 {
-	echo "inside first if statement<br>";
+//	echo "inside first if statement<br>";
 	//	$loadthis="		loadContent ('#logform', '/login.html');\n";
 	$loadthis="		loadContent ('#content', 'intro.html');\n";
 	$loadthis.="		$('#visitor').show();\n";
@@ -92,7 +94,7 @@ if (($_COOKIE[_hrsb_msb]== NULL && $_COOKIE[loggedin]== NULL) ||
 }
 elseif ($_COOKIE[_hrsb_msb] != NULL && $_COOKIE[loggedin]== "true")
 {
-	echo "inside elseif statement<br>";
+//	echo "inside elseif statement<br>";
 	$cookie=explode('_',$_COOKIE[_hrsb_msb]);
 	//print_r($cookie);
 	$cookie1=explode(':',$_COOKIE[_hrsb_msb]);
@@ -185,9 +187,9 @@ elseif ($_COOKIE[_hrsb_msb] != NULL && $_COOKIE[loggedin]== "true")
 		tellmessage = $( "#tellmessage" ),
 		tellfields = $( [] ).add( toemail ).add( fromemail ).add( tellmessage ),
 		myemail = $( "#myemail" ),
-		subject = $( "#subject" ),
+		contacttypeid = $( "#contacttypeid" ),
 		contactmessage = $( "#contactmessage" ),
-		contactfields = $( [] ).add( myemail ).add( subject ).add( contactmessage ),
+		contactfields = $( [] ).add( myemail ).add( contacttypeid ).add( contactmessage ),
 		tips = $( ".validateTips" );
 
 function updateTips( t )
@@ -264,7 +266,7 @@ function notEqual (exp1, exp2)
 
 function isrequired (i, n )
 {
-//alert ("line 261 data:  "+i.val().length+", "+n+".");
+//alert ("line 269 isrequired data:  "+i.val().length+", "+n+".");
 	if ( i.val().length == 0 )
 	{
 		i.addClass( "ui-state-error" );
@@ -673,6 +675,104 @@ function logoutindex()
 						$( this ).dialog( "close" );
 				}
 			});
+
+			$( "#contactus" ).dialog(
+			{
+				autoOpen: false,
+				height: 520,
+				width: 700,
+				modal: true,
+				buttons:
+				{
+					"Send My Message": function()
+					{
+						$("#submit").removeClass ('ui-state-focus');
+						var bValid = true;
+						contactfields.removeClass( "ui-state-error" );
+						tips.removeClass( "ui-state-error" );
+						document.getElementById('contacttip').innerHTML="";
+						bValid = bValid && isrequired( myemail, "My Email Address");
+					// bValid = bValid && checkLength( email, "Email", 6, 80 );
+					// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+						bValid = bValid && checkRegexp( "My Email Address", myemail, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "Your Email Address must be a valid format, e.g. yourname@somedomain.com" );
+						if (!bValid)
+						{
+							$("#myemail").focus();
+
+							return false;
+						}
+						bValid = bValid && isrequired( contacttypeid, "Subject");
+						if (!bValid)
+						{
+							$("#contacttypeid").focus();
+							return false;
+						}
+					// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+						bValid = bValid && isrequired( contactmessage, "Message");
+						if (!bValid)
+						{
+							$("#contactmessage").focus();
+							return false;
+						}
+						if ( bValid )
+						{
+							var vars = $("form").serialize();
+//		tellfields=$( [] ).add( toemail ).add( fromemail ).add( tellmessage ),
+//		contactfields=$( [] ).add( myemail ).add( subject ).add( contactmessage ),
+
+						 // perform other work here ...
+							$.ajax(
+							{
+								type : 'POST',
+								cache: false,
+								url : '/ajax/contactus.php',
+								dataType : 'json',
+								data:
+								{
+									from : $('#myemail').val(),
+									subject : $('#contacttypeid').val(),
+									message : $('#contactmessage').val(),
+									action : 'send'
+								},
+								success : function(data)
+								{
+									if (data.error == false)
+									{
+			//							document.location.href='/index.php';
+			//							document.cookie = 'loggedin=true';
+										$('#contacttip').addClass("ui-state-error ui-corner-all").text(data.msg).show(500);
+										$(data.id).hide();
+			//							$('#demos').hide();
+			//							$('#accordion').accordion().show();
+			//							$('#loggedin').show();
+			//							$('#visitor').hide();
+			//							loadContent ('#content', '/outer.php');
+										return;
+							}
+								},
+								error : function(data)
+								{
+									$('#contacttip').removeClass().addClass('error')
+									.text(data.msg).show(500);
+									$('#submit').show(500);
+									return false;
+								}
+      					});
+					// unblock when remote call returns
+//						return false;
+						}
+					},
+					Cancel: function()
+					{
+						$( this ).dialog( "close" );
+						$("#create-user").removeClass ('ui-state-focus');
+					}
+				},
+				close: function()
+				{
+						$( this ).dialog( "close" );
+				}
+			});
 		$( "#create-user" )
 			.button()
 			.click(function()
@@ -799,13 +899,18 @@ if ($registered!="")
 <push id="push"></push>
 
 <logo> <a href="/"><img title="My Staging Box - The most technologically advanced schedule on the Web." alt="MyStagingBox.com" src="images/msb-logo7.gif" border="0"></a></logo>
-<!--
 <topbanner>
+<!--
 <div id="headad">
+<?php
+	require_once($_SERVER["DOCUMENT_ROOT"]."/sponsor/index.php");
+	get-top();
+?>
+
 <a href="#" id="topad">Advertise Here</a><br />Advertise your business or service here.  You may include a banner ad and text, or one or the other.  There is no cost to place this ad.
 </div>
-</topbanner>
 -->
+</topbanner>
 <!--
 <sitesearch>
 	<form method="post" id="gsearch" action="googlesearch-results.html">
@@ -921,7 +1026,11 @@ if ($registered!="")
 <contact id="get-contact">Contact Us</contact>
 </contacttell>
 <!--
-  <sponsorad><a href="#" id="rightad">Advertise Here</a><br />Advertise your business or service here.  You may include a small graphic and text, or one or the other.  There is no cost to place this ad.</sponsorad>
+  <sponsorad>
+<?php
+	get-side();
+?>
+  <a href="#" id="rightad">Advertise Here</a><br />Advertise your business or service here.  You may include a small graphic and text, or one or the other.  There is no cost to place this ad.</sponsorad>
   <googleright id="towerright">
   <?php
  // include ($_SERVER['DOCUMENT_ROOT']."/includes/googleright.php");
@@ -932,13 +1041,15 @@ if ($registered!="")
 </content>
 <footer>
 <corpnav>
+<!--
 <a href="#" id="about">About MyStagingBox.com</a>
 <a href="#" id="tos">TOS</a>
 <a href="#" id="faq">FAQ</a>
 <a href="#" id="contact">Contact Us</a>
+-->
 </corpnav>
 <copyright>
-  &copy; 2011 - <?php echo date('Y'); ?> MyStagingBox.com - All Rights Reserved
+  &copy; 2012 - <?php echo date('Y'); ?> MyStagingBox.com - All Rights Reserved
 </copyright>
 </footer>
 <div id="actacct" title="Activate my Account" style="display:none;">
@@ -1017,9 +1128,15 @@ if ($registered!="")
 		<label for="myemail">My Email Address</label>
 		<input type="text" name="myemail" id="myemail" value="" title="My Email Address" class="text ui-widget-content ui-corner-all" />
 		<label for="subject">Subject</label>
-		<input type="text" name="subject" id="subject" value="" title="Subject" class="text ui-widget-content ui-corner-all" />
+<br />
+<?php
+//sysGetSelect($val_name, $table_name, $empty_item = 1, $select = -1, $display_field = "name", $val_field = "id");
+sysGetSelect("contacttypeid", "contacttype", 1, -1, "contacttype", "contacttypeid");
+?>
+<br />
+<br />
 		<label for="contactmessage">Message (<span id="remaining2">2000</span> remaining.)</label>
-		<textarea class="text ui-widget-content ui-corner-all" name="contactmessage" rows="12" cols="88" wrap onkeyup="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 2000);" onkeydown="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 2000);" onmouseout="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 2000);"><?php  echo $contactmessage; ?></textarea>
+		<textarea class="text ui-widget-content ui-corner-all" id="contactmessage" name="contactmessage" rows="12" cols="88" wrap onkeyup="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 2000);" onkeydown="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 2000);" onmouseout="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 2000);"><?php  echo $contactmessage; ?></textarea>
 	</fieldset>
 	</form>
 </div>
