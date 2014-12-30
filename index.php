@@ -493,8 +493,8 @@ function logoutindex()
 			$( "#login" ).dialog(
 			{
 				autoOpen: false,
-				height: 280,
-				width: 350,
+				height: 300,
+				width: 400,
 				modal: true,
 				buttons:
 				{
@@ -548,8 +548,36 @@ function logoutindex()
 			//							$('#visitor').hide();
 			//							loadContent ('#content', '/outer.php');
 									}
-								},
-								error : function(data)
+									if (data.error == true)
+									{
+//alert ("line 331 data: "+data.success+", "+data.error+", "+data.msg+", "+data.id+"");
+										if (data.id == 'loginid')
+										{
+//alert ("line 334 data: "+data.success+", "+data.error+", "+data.msg+", "+data.id+"");
+											updateTips (data.msg);
+//										document.getElementById("logtip").innerHTML=data.msg;
+//										document.getElementById('logtip').style.display="block";
+											document.getElementById('logtip').class +="ui-corner-all";
+											document.getElementById('loginid').class +="ui-state-error ";
+//										$(tips).removeClass().addClass('ui-state-error').text(data.msg);
+                     	   		$('#loginid').addClass('ui-state-error').focus();
+											$('#submit').show(500);
+										}
+										if (data.id == 'password')
+										{
+//alert ("line 341 data: "+data.success+", "+data.error+", "+data.msg+", "+data.id+"");
+											updateTips (data.msg);
+//										document.getElementById("logtip").innerHTML=data.msg;
+//										document.getElementById("logtip").style.display="block";
+											document.getElementById('logtip').class +="ui-corner-all";
+											document.getElementById('password').class +="ui-state-error";
+//										$(tips).removeClass().addClass('ui-state-error').text(data.msg);
+         	      	         	$('#email12').addClass('ui-state-error').focus();
+											$('#submit').show(500);
+										}
+									}
+									},
+									error : function(data)
 								{
 									$('#logtip').removeClass().addClass('error')
 									.text(data.msg).show(500);
@@ -899,19 +927,13 @@ if ($registered!="")
 <push id="push"></push>
 
 <logo> <a href="/"><img title="My Staging Box - The most technologically advanced schedule on the Web." alt="MyStagingBox.com" src="images/msb-logo7.gif" border="0"></a></logo>
-<topbanner>
 <!--
+<topbanner>
 <div id="headad">
-<?php
-	require_once($_SERVER["DOCUMENT_ROOT"]."/sponsor/index.php");
-	get-top();
-?>
-
+<?php // require_once($_SERVER["DOCUMENT_ROOT"]."/sponsor/index.php"); ?>
 <a href="#" id="topad">Advertise Here</a><br />Advertise your business or service here.  You may include a banner ad and text, or one or the other.  There is no cost to place this ad.
 </div>
--->
 </topbanner>
-<!--
 <sitesearch>
 	<form method="post" id="gsearch" action="googlesearch-results.html">
 		<input name="q" type="text">
@@ -1026,11 +1048,7 @@ if ($registered!="")
 <contact id="get-contact">Contact Us</contact>
 </contacttell>
 <!--
-  <sponsorad>
-<?php
-	get-side();
-?>
-  <a href="#" id="rightad">Advertise Here</a><br />Advertise your business or service here.  You may include a small graphic and text, or one or the other.  There is no cost to place this ad.</sponsorad>
+  <sponsorad><a href="#" id="rightad">Advertise Here</a><br />Advertise your business or service here.  You may include a small graphic and text, or one or the other.  There is no cost to place this ad.</sponsorad>
   <googleright id="towerright">
   <?php
  // include ($_SERVER['DOCUMENT_ROOT']."/includes/googleright.php");
