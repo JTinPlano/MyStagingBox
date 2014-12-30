@@ -23,9 +23,7 @@ get_globals();
 		$passwordmd5 = md5($password);
 		$return[error]='false';
 		$return['msg'] = '';
-		$query = "SELECT * FROM `subscriber`
-		WHERE `loginid` = '".$loginid."'
-		and `passwordmd5` = '".$passwordmd5."'";
+		$query = "SELECT * FROM `subscriber` WHERE `loginid` = '".$loginid."'";
 //echo "line 29 $query<br>";
 		$res = q($query) or die (mysql_error());
 //exit();
@@ -33,25 +31,29 @@ get_globals();
 		$rows=nr($res);
 		$row=f($res);
 //echo "rows $rows<br>";
+
 		if($rows == 0)
 		{
-
-			if (($row[loginid] != $loginid) && ($row[passwordmd5] != $passwordmd5))
-			{
 				$return['error'] = true;
-				$return['msg'] = 'The loginid and password entered are invalid.  Please double-check them and try again.  Both are case-sensitive.';
-			}
-			elseif ($row[loginid] != $loginid)
-			{
-				$return['error'] = true;
-				$return['msg'] = 'The loginid entered is invalid.  Please re-enter it and try again.  It\'s case-sensitive.';
-			}
-			else
-			{
-				$return['error'] = true;
-				$return['msg'] = 'The password entered is invalid.  Please re-enter it and try again.  It\'s case-sensitive.';
-			}
+				$return['msg'] = 'The loginid entered is invalid or not registered.  Please re-enter it and try again.  It\'s case-sensitive.';
+				$return['id'] = 'loginid';
 		}
+		elseif ($rows > 0)
+		{
+			$query = "SELECT * FROM `subscriber` WHERE `loginid` = '".$row[loginid]."' and `passwordmd5` = '".$passwordmd5."'";
+//echo "line 29 $query<br>";
+			$res = q($query) or die (mysql_error());
+//exit();
+//check if theres a match
+			$rows=nr($res);
+			$row=f($res);
+//echo "rows $rows<br>";
+			if($rows != 1)
+			{
+				$return['error'] = true;
+				$return['msg'] = 'The password entered is invalid.  Please re-enter it and try again.  It\'s  case-sensitive.';
+				$return['id'] = 'password';
+			}
 		else
 		{
 //		print_r($return);
@@ -79,6 +81,7 @@ get_globals();
 			$return['error'] = false;
 			$return['msg'] = '';
 		}
+	}
 //		print_r($return);
 		echo json_encode($return);
 ?>
