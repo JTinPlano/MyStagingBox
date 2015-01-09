@@ -26,16 +26,8 @@ if (isset ($_GET))
 {
 	foreach ($_GET as $k -> $v)
 	{
-		$k = $v;
 		$$k = $v;
-		if($k == $v)
-		{
-			$query = "select * from sponsor where
-		}
-		else
-		{
-
-		}
 	}
+//$query = "select * from sponsor where
 }
 ?>
