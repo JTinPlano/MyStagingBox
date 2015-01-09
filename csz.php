@@ -1,18 +1,19 @@
 <?php
-
+require($_SERVER["DOCUMENT_ROOT"]."/lib/mysql.php");
 // Cleaning up the term
 $term = trim(strip_tags($_GET['term']));
 if (!$term) return;
 
- include ("includes/parse.php");
-// insert the connection settings to your mysql database here!!
+include ($_SERVER["DOCUMENT_ROOT"]."/includes/parse.php");
+// insert the connection settings to your mysql database here!
+/*
 $con = mysql_connect('localhost', 'root', '');
 if (!$con)
 {
   die('Could not connect: ' . mysql_error());
 }
-mysql_select_db("hrsbutt", $con);
-
+mysql_select_db("hrsbutt52", $con);
+*/
 $term=$_GET['term'];
 $index=0;
 $query="select city, state, zipcode, zipid from zipcode where zipcode like '$term%' ORDER BY zipcode asc";
@@ -23,7 +24,7 @@ $zips=array();
 if (mysql_num_rows($res)>0)
 {
 
-	while ($row = mysql_fetch_array($res)) 
+	while ($row = mysql_fetch_array($res))
 	{
 		$zips[$index++]= array("zipid"=>"$row[zipid]", "city"=>"$row[city]", "state"=>"$row[state]", "zip"=>"$row[zipcode]", 'value' => $row['zipcode'], 'label' => "{$row['zipcode']}");
 //		echo "'$row[city]'";
@@ -31,7 +32,7 @@ if (mysql_num_rows($res)>0)
 	}
 }
 // print_r($zips);
- 
+
 // Rudimentary search
 $matches = array();
 foreach($zips as $zip)
