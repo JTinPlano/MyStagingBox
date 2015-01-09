@@ -4,34 +4,40 @@ Host Name: hrsbutt52.db.5210461.hostedresource.com
 Database Name: hrsbutt52
 User Name: hrsbutt52
 Database Password:  Marble52
+*/
 $connected = false;
+$hostname = "hrsbutt52.db.5210461.hostedresource.com";
+$username = "hrsbutt52";
+$dbname = "hrsbutt52";
 $db_host = "hrsbutt52.db.5210461.hostedresource.com";
 $db_name = "hrsbutt52";
 $db_login = "hrsbutt52";
-$db_pswd = "Marble52";
-*/
+$db_pswd = "Marble@52";
 //echo "from mysql.php line 13 $db_host,$db_name,$db_login,$db_pswd, $connected<br>";
+//exit();
+/*
 $connected = false;
 $db_host = "localhost";
 $db_name = "hrsbutt";
 $db_login = "root";
 $db_pswd = "";
+*/
 
   function c()
   {
       global $db_host, $db_login, $db_pswd;
 
-//      $link = mysql_connect("hrsbutt52.db.5210461.hostedresource.com", "hrsbutt52", "Marble52") or die (mysql_error());
-      $link = mysql_connect($db_host, $db_login, $db_pswd) or die (mysql_error());
+      $link = mysql_connect("hrsbutt52.db.5210461.hostedresource.com", "hrsbutt52", "Marble@52") or die (mysql_error());
+//      $link = mysql_connect($db_host, $db_login, $db_pswd) or die (mysql_error());
 		if (!$link)
 		{
  //echo "from c() line 21 $db_host,$db_name,$db_login,$db_pswd, $connected<br>";
    		die('Not connected : ' . mysql_error());
 		}
-      $db_selected = mysql_select_db("hrsbutt",$link);
-//      $db_selected = mysql_select_db($db_name,$link);
+//      $db_selected = mysql_select_db("hrsbutt",$link);
+      $db_selected = mysql_select_db("hrsbutt52",$link);
 		if (!$db_selected) {
-//echo "from c() line 26 $db_host,$db_name,$db_login,$db_pswd, $connected<br>";
+echo "from c() line 40 $db_host,$db_name,$db_login,$db_pswd, $connected<br>";
     		die ('Can\'t use foo : ' . mysql_error());
 		}
 		else
