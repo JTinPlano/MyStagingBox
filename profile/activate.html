@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Activate My Account</title>
+	<link type="text/css" href="/css/jquery-ui-1.8.14.dark-hive.css" rel="stylesheet" />
+	<link type="text/css"  href="/css/prod.css" rel="stylesheet" />
+	<link type="text/css"  href="/css/tooltip.css" rel="stylesheet" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.8.14.dark-hive.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.cookies.2.2.0.js"></script>
+	<script type="text/javascript" src="/js/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="/js/hrsb.js"></script>
+	<script type="text/javascript" src="/js/jTip.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+	function loadContent(elementSelector, sourceUrl)
+	{
+		$(""+elementSelector+"").load(""+sourceUrl+"");
+	}
+	$( "#activate" ).click(function()
+		{
+			$.blockUI();
+			$.ajax (
+			{
+				type : 'POST',
+				cache: false,
+				url : '/includes/post.php',
+				dataType : 'json',
+				data:
+				{
+					action : "activate",
+					key : $('#key').val()
+				},
+				success : function(data)
+				{
+	      		$.unblockUI();
+					$('#tip').removeClass().addClass((data.error === true) ? 'error' : 'success').text(data.msg).show(500);
+					if (data.error == true){$.unblockUI();}
+					if (data.error == false)
+					{
+						document.location.href='/index.php';
+						loadContent('#regform','/profile/homelink.html');
+//						document.location.href='/profile/homelink.html';
+					}
+				},
+ 				error : function(data)
+				{
+	      		$.unblockUI();
+					$('#tip').removeClass().addClass('error')
+					.text('There was an error.').show(500);
+					$('#submit').show(500);
+				}
+			});
+  		$.unblockUI();
+		return false;
+	});
+});
+
+</script>
+</head>
+<body>
+<span class="validateTip" id="tip">You are now registered.  Please check your email inbox for the activation code.  Copy it from your email, paste it into the box below, then click "Activate My Account" to complete the registration process and to be logged in automatically.</span>
+<form class="ui-widget-content ui-corner-all">
+			<table border="0" width="100%">
+				<tr class="ui-widget">
+					<td valign="top"><b>Activation Code</b>&nbsp;<br />
+						<input type="text" size="60" id="key" name="key" value="" class="text" />
+						<input id="activate" type="submit" value="Activate My Account" class="ui-button ui-widget ui-state-default ui-corner-all">
+					</td>
+				</tr>
+			</table>
+</form>
+</body>
+</html>
