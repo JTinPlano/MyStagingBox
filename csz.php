@@ -18,13 +18,13 @@ $term=$_GET['term'];
 $index=0;
 $query="select city, state, zipcode, zipid from zipcode where zipcode like '$term%' ORDER BY zipcode asc";
 //echo $query."<br>\n";
-$res = mysql_query($query);
-//print (mysql_num_rows($res));
+$res = q($query);
+//print (nr($res));
 $zips=array();
-if (mysql_num_rows($res)>0)
+if (nr($res)>0)
 {
 
-	while ($row = mysql_fetch_array($res))
+	while ($row = f($res))
 	{
 		$zips[$index++]= array("zipid"=>"$row[zipid]", "city"=>"$row[city]", "state"=>"$row[state]", "zip"=>"$row[zipcode]", 'value' => $row['zipcode'], 'label' => "{$row['zipcode']}");
 //		echo "'$row[city]'";
