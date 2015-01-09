@@ -281,7 +281,9 @@ echo <<<END
 						<a name="$year$month$index"></a>
 						<!-- start 2-1 content -->
 						<div id="date" class="ui-helper-reset ui-state-default ui-corner-all">$days[$dow] $month - $index - $year</div>
-<googlebottom id="bottom">google bottom
+<googlebottom id="bottom">
+<!--
+google bottom
 
 <script type="text/javascript">
 google_ad_client = "ca-pub-0084848109834460";
@@ -293,7 +295,7 @@ google_ad_height = 15;
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
-
+-->
 </googlebottom>
 						<div class="hrefstate" id="states">Shows today in: $hrefstate</div>
 END;
@@ -394,10 +396,12 @@ END;
 				$frequencywording = frequency($eventtypeid, $eventcatid, $weeknum, $days[$dow], $month, $thisdate);
 				$subid = explode (":", $_COOKIE['_hrsb_msb']);
 				$edit="";
-				if ($subscriberid == $subid[0])
+/*				if ($subscriberid == $subid[0] && $_COOKIE['loggedin']=="true")
+
 				{
 					$edit="<button><a href=\"#\">Edit</a></button>";
 				}
+*/
 
 //					$NumDays==1?$day = " day":$day = " days";
 //					$state=$events;

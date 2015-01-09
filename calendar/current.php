@@ -379,10 +379,12 @@ END;
 				$frequencywording = frequency($eventtypeid, $eventcatid, $weeknum, $days[$dow], $month, $thisdate);
 				$subid = explode (":", $_COOKIE['_hrsb_msb']);
 				$edit="";
-/*				if ($subscriberid == $subid[0])
+/*				if ($subscriberid == $subid[0] && $_COOKIE['loggedin']=="true")
+
 				{
 					$edit="<button><a href=\"#\">Edit</a></button>";
-				}	*/
+				}
+*/
 
 //					$NumDays==1?$day = " day":$day = " days";
 //					$state=$events;
