@@ -12,6 +12,7 @@ get_globals();
 //	echo "line 63 $k = $v\n";
 		$$k = $v;
 	}
+$message=nl2br($message);
 //	echo "line 16 sendmessage<br />".$message."<br />\n";
 	$subject="Your friend at $from thought you might like this.";
 //$message .= $subject."<br /><br/>".$message."<br /><br/>.";

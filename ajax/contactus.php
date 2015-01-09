@@ -40,7 +40,7 @@ $query="select contacttype from contacttype where contacttypeid='$subject'";
 	</header>
 	<table>
 	<tr><td>
-		'.$subject.'<br /><br />'.$message.'<br /><br />
+		'.$subject.'<br /><br />'.nl2br($message).'<br /><br />
 	</td></tr>
 	</table>
 	</body>
