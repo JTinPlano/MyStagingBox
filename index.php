@@ -1134,8 +1134,8 @@ if ($registered!="")
 	}
 ?>
 		<input type="text" name="fromemail" id="fromemail" value="<?php echo $from;?>" title="My Email Address" class="text ui-widget-content ui-corner-all" />
-		<label for="tellmessage">Message to Friend (<span id="remaining1">512</span> remaining.)</label>
-		<textarea class="text ui-widget-content ui-corner-all" id="tellmessage" name="tellmessage" rows="12" cols="80" wrap onkeyup="CheckFieldLength(tellmessage, 'charcount', 'remaining1', 512);" onkeydown="CheckFieldLength(tellmessage, 'charcount', 'remaining1', 512);" onmouseout="CheckFieldLength(tellmessage, 'charcount', 'remaining1', 512);"><?php  echo $tellmessage; ?></textarea>
+		<label for="tellmessage">Message to Friend (<span id="remaining1">768</span> remaining.)</label>
+		<textarea class="text ui-widget-content ui-corner-all" id="tellmessage" name="tellmessage" rows="12" cols="80" wrap onkeyup="CheckFieldLength(tellmessage, 'charcount', 'remaining1', 768);" onkeydown="CheckFieldLength(tellmessage, 'charcount', 'remaining1', 768);" onmouseout="CheckFieldLength(tellmessage, 'charcount', 'remaining1', 768);"><?php  echo $tellmessage; ?></textarea>
 	</fieldset>
 	</form>
 </div>
