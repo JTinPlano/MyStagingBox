@@ -1022,7 +1022,7 @@ if ($registered!="")
 
   <googleleft id="towerleft">
 <?php
-// include ($_SERVER['DOCUMENT_ROOT']."/includes/googleleft.php");
+	include ($_SERVER['DOCUMENT_ROOT']."/includes/googleleft.js");
 ?>
 </googleleft>
 </leftcolumn>
@@ -1031,13 +1031,13 @@ if ($registered!="")
 <div id="sitenotice" style="display:none;" class="notice ui-state-error ui-corner-top"></div>
 <googletop id="top">
 <?php
-// include ($_SERVER['DOCUMENT_ROOT']."/includes/googletop.php");
+	include ($_SERVER['DOCUMENT_ROOT']."/includes/googletop.js");
 ?>
 </googletop>
 <div id="content" class="ui-widget"></div>
 <googlebottom id="bottom">
 <?php
-// include ($_SERVER['DOCUMENT_ROOT']."/includes/googlebottom.php");
+	include ($_SERVER['DOCUMENT_ROOT']."/includes/googlebottom.js");
 ?>
 </googlebottom>
 </centercolumn>
@@ -1049,12 +1049,12 @@ if ($registered!="")
 </contacttell>
 <!--
   <sponsorad><a href="#" id="rightad">Advertise Here</a><br />Advertise your business or service here.  You may include a small graphic and text, or one or the other.  There is no cost to place this ad.</sponsorad>
-  <googleright id="towerright">
-  <?php
- // include ($_SERVER['DOCUMENT_ROOT']."/includes/googleright.php");
-  ?>
-</googleright>
 -->
+<googleright id="towerright">
+<?php
+include ($_SERVER['DOCUMENT_ROOT']."/includes/googleright.js");
+?>
+</googleright>
 </rightcolumn>
 </content>
 <footer>
