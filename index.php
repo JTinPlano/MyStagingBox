@@ -899,7 +899,7 @@ $(function() {
 }); // end document ready
 </script>
 <?php
-//include ($_SERVER["DOCUMENT_ROOT"]."/includes/tracking.php");
+include ($_SERVER["DOCUMENT_ROOT"]."/includes/tracking.js");
 ?>
 </head>
 <body>
