@@ -101,7 +101,7 @@ elseif ($_COOKIE[_hrsb_msb] != NULL && $_COOKIE[loggedin]== "true")
 	//print_r($cookie1);
 	if ($_COOKIE[loggedin]=='true')
 	{
-		if ($cookie[1] < date ('U'))
+		if ($cookie[1] != date ('U'))
 		{
 			$expires = date('U') + (3600*24*7);
 			$newcookie=$cookie[0]."_".$expires."_1";
@@ -1153,8 +1153,8 @@ sysGetSelect("contacttypeid", "contacttype", 1, -1, "contacttype", "contacttypei
 ?>
 <br />
 <br />
-		<label for="contactmessage">Message (<span id="remaining2">2000</span> remaining.)</label>
-		<textarea class="text ui-widget-content ui-corner-all" id="contactmessage" name="contactmessage" rows="12" cols="88" wrap onkeyup="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 2000);" onkeydown="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 2000);" onmouseout="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 2000);"><?php  echo $contactmessage; ?></textarea>
+		<label for="contactmessage">Message (<span id="remaining2">1024</span> remaining.)</label>
+		<textarea class="text ui-widget-content ui-corner-all" id="contactmessage" name="contactmessage" rows="12" cols="88" wrap onkeyup="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 1024);" onkeydown="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 1024);" onmouseout="CheckFieldLength(contactmessage, 'charcount', 'remaining2', 1024);"><?php  echo $contactmessage; ?></textarea>
 	</fieldset>
 	</form>
 </div>
