@@ -39,7 +39,6 @@ echo "<br />\ncookie1<br />\n";
 	print_r($cookie1);
 echo "<br />\n";
 	*/
-	//	exit();
 		if ($_COOKIE[token]==$_GET[token])
 		{
 			$cookie=explode('_',$_COOKIE[_hrsb_msb]);
