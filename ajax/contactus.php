@@ -14,6 +14,16 @@
 	{
 //		echo "line 15 $k = $v<br />\n";
 		$$k = $v;
+		if (($k=='myemail' || $k== 'contactmessage')  && $v=='')
+		{
+			$return['success'] = false;
+			$return['error'] = true;
+			$return['msg'] = 'A blank email address or message cannot be sent.';
+			$return['id'] = 'contacttip';
+			echo json_encode($return);
+			return;
+		}
+
 	}
 $message=nl2br($message);
 //	exit();

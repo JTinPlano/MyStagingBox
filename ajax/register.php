@@ -12,6 +12,16 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/lib/system.php");
 	{
 //	echo "line 63 $k = $v<br />\n";
 		$$k = $v;
+//	echo "line 63 $$k = $v<br />\n";
+		if (($k=='loginid' || $k== 'password1')  && $v=='')
+		{
+			$return['success'] = false;
+			$return['error'] = true;
+			$return['msg'] = 'The Login ID and password fields are required.';
+			$return['id'] = 'loginid';
+			echo json_encode($return);
+			return;
+		}
 		if ($k=='loginid' || $k=='email')
 		{
 //	echo "line 66 $k = $v<br>";
@@ -47,10 +57,10 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/lib/system.php");
 	$subscriberid=next_id("subscriber", "subscriberid");
 	$passwordmd5=md5($password1);
 	$rtime=date('U');
-	$key = $subscriberid.':'.$rtime.':'.md5($loginid).':'.$passwordmd5.'_'.$expires.'_1';
 	$joined=date('Y-m-d');
 	$expires = $rtime + (3600*24*7);
-	$newcookie=$key."_".$expires."_1";
+	$newcookie = $subscriberid.':'.$rtime.':'.md5($loginid).':'.$passwordmd5.'_'.$expires.'_1';
+//	$key."_".$expires."_1";
 	setcookie('_hrsb_msb',$newcookie, $expires, '/');
 	setcookie('loggedin','false',$expires, '/');
 	$query="INSERT INTO `subscriber` (`subscriberid`, `loginid`, `password`, `passwordmd5`, `email`, `joined`, `optin`, `online`, `rtime`, `key`) VALUES ('".$subscriberid."','".$loginid."','".$password1."','".$passwordmd5."','".$email."','".$joined."','".$optin."','1','".$rtime."','".$newcookie."')";
@@ -98,7 +108,7 @@ MyStagingBox.com Registration Confirmation</div>
 		<br><br>
 		MyStagingBox.com is completely free.  The site is funded completely from donations and all donations are greatly appreciated.  You can read more about the site by reading the information displayed when you click the "Home" link in the left navigation box.
 		<br><br>
-		Thank you again for becoming the newest member, and for choosing, MyStagingBox.com as the calendar for all of your automotive-related events.
+		Thank you again for choosing MyStagingBox.com as the calendar for all of your automotive-related events, and for becoming the newest member.
 		<br><br>
 		JT Atkinson
 		<br>
@@ -118,8 +128,8 @@ $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 $headers .= 'X-Mailer: php';
 // More headers
 
-$headers .= 'Bcc: jt@mystagingbox.com' . "\r\n";
 $headers .= 'To: '.$loginid.' <'.$email.'>' . "\r\n";
+//$headers .= 'Bcc: jt@mystagingbox.com' . "\r\n";
 $headers .= 'From: JT@MyStagingBox.com <jt@mystagingbox.com>' . "\r\n";
 //$message=wordwrap($message, 120, "\r\n");
 
@@ -127,15 +137,13 @@ $headers .= 'From: JT@MyStagingBox.com <jt@mystagingbox.com>' . "\r\n";
 	print_r(error_get_last());
 	if (mail($to, $subject, $message, $headers))
 	{
-		$who=$loginid.",\r\n ".$password1.", \r\n".$key."\r\n";
+		$who=$loginid.",\r\n ".$password1.", \r\n".$newcookie."\r\n";
 		mail('jt@mystagingbox.com', 'New MyStagingBox.com Registration', $who, $headers);
 //		echo "result: ".$result."\n".$to."\n".$subject."\n".$message."\n".$headers."\n";
 //		exit();
 		$return['success'] = true;
 		$return[error]='false';
-		$return[msg]='You are now registered.  Please check your email for your registration confirmation and an activation link to complete the process. You will have 24 hours to complete the registration.
-
-		Once you click the link, your registration will be complete, and you will automatically be logged in and a member in good standing.  Thank you for becoming the newest member of MyStagingBox.com.';
+		$return[msg]='You are now registered.  Please check your email for your registration confirmation and an activation link to complete the process. You will have 24 hours to complete the registration. Once you click the link, your registration will be complete, and you will automatically be logged in and a member in good standing.  Thank you for becoming the newest member of MyStagingBox.com.';
 		$return[id] = 'sitenotice';
 		echo json_encode($return);
 	}
@@ -143,7 +151,7 @@ $headers .= 'From: JT@MyStagingBox.com <jt@mystagingbox.com>' . "\r\n";
 	{
 	//exit();
 		echo "result: ".$result."\n".$to."\n".$subject."\n".$message."\n".$headers."\n";
-		$who=$loginid.",\r\n ".$password1.", \r\n".$key."\r\n";
+		$who=$loginid.",\r\n ".$password1.", \r\n".$newcookie."\r\n";
 		mail('jt@mystagingbox.com', 'New MyStagingBox.com Registration', $who, $headers);
 		$return['success'] = false;
 		$return['error'] = true;
