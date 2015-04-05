@@ -69,7 +69,11 @@ echo "<br />\n";
 	if ($_GET[action]=="success")
 	{
 //		echo "registrion successfull<br />n";
-		$registered="You have activated your account successfully.";
+//		document.getElementById('sitenotice').style.border ='1px solid #0000ff';
+//		document.getElementById('sitenotice').class +="ui-corner-all";
+//		document.getElementById('sitenotice').innerHTML="You have activated your account successfully.;
+//		document.getElementById('sitenotice').style.display="block";
+//		$registered="You have activated your account successfully.";
 //		exit();
 	}
 }
@@ -425,13 +429,13 @@ function logoutindex()
 								if (data.success == true)
 								{
 //alert ("line 323 data: "+data.success+" "+data.error+", "+data.msg+", "+data.id+"");
-									$('#register').dialog("close")
+									$('#register').dialog("close");
 									document.getElementById('sitenotice').style.border ='1px solid #0000ff';
-									document.getElementById('sitenotice').class +="ui-corner-all";
+									document.getElementById('sitenotice').class +='ui-corner-all';
 									document.getElementById('sitenotice').innerHTML=data.msg;
-									document.getElementById('sitenotice').style.display="block";
+									document.getElementById('sitenotice').style.display='block';
 									$('#content').fadeOut(3000);
-									document.getElementById('content').style.display="none";
+									document.getElementById('content').style.display='none';
 								}
 								if (data.error == true)
 								{
@@ -915,7 +919,9 @@ include ($_SERVER["DOCUMENT_ROOT"]."/includes/tracking.js");
 if ($registered!="")
 {
 ?>
+<!--
 <div id="success" name="success"><?php echo $registered ?><br /></div>
+-->
 <?php
 }
 ?>
