@@ -11,6 +11,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/lib/mysql.php");
 require($_SERVER["DOCUMENT_ROOT"]."/lib/system.php");
 
 /*	sponsor table
+DROP TABLE IF EXISTS `sponsor`;
+CREATE TABLE `sponsor` (
   `adid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `sponsorid` int(10) unsigned NOT NULL,
   `subscriberid` int(11) unsigned NOT NULL,
@@ -21,6 +23,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/lib/system.php");
   `clicks` int(11) NOT NULL,
   `siteurl` varchar(48) NOT NULL,
   `imageurl` varchar(48) NOT NULL,
+  PRIMARY KEY  (`adid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 */
 if (isset ($_GET))
 {
